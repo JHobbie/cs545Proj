@@ -16,6 +16,6 @@ public class loadSet : MonoBehaviour
         
     }
     public void returnToMain(){
-        SceneManager.LoadScene("mainMenu");
+        SceneManager.LoadScene("mainMenu",LoadSceneMode.Single);
     }
 }

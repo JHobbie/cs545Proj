@@ -7,18 +7,23 @@ public class mainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-     void loadNewSet(){
-        SceneManager.LoadScene("newSetScreen");
+    public void loadNewSet()
+    {
+        SceneManager.LoadScene("newSetScreen",LoadSceneMode.Single);
     }
-    void loadLoadSet(){
-        SceneManager.LoadScene("loadSetScreen");
+    public void loadLoadSet()
+    {
+        SceneManager.LoadScene("loadSetScreen",LoadSceneMode.Single);
+    }
+    public void quit() {
+        Application.Quit();
     }
 }

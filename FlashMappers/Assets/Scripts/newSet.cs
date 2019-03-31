@@ -15,7 +15,7 @@ public class newSet : MonoBehaviour
     {
         
     }
-     void returnToMain(){
-        SceneManager.LoadScene("mainMenu");
+    public void returnToMain(){
+        SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
     }
 }
