@@ -25,12 +25,22 @@ public class gameRoom : MonoBehaviour
     */
     void Start()
     {
-        
+    	//labels the current scene
+	    Scene currentScene = SceneManager.GetActiveScene();
+	    //gets the name of the current scene
+	    string sceneName = currentScene.name;
+	    //get the game object
+	    GameObject player = GameObject.Find("player_tilesheet_0");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+	    if (sceneName == "game"){
+	    	//Do stuff in the game
+	    	
+	    }
+
+
     }
 }
