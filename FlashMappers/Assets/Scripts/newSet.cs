@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class mainMenu : MonoBehaviour
+public class newSet : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,10 +15,7 @@ public class mainMenu : MonoBehaviour
     {
         
     }
-     void loadNewSet(){
-        SceneManager.LoadScene("newSetScreen");
-    }
-    void loadLoadSet(){
-        SceneManager.LoadScene("loadSetScreen");
+     void returnToMain(){
+        SceneManager.LoadScene("mainMenu");
     }
 }
