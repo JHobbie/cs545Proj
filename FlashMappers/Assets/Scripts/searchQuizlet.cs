@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/* 
 using HtmlAgilityPack;
 public class searchQuizlet : MonoBehaviour
 {
-    public void searchQuizlet(string url)
+    public void search(string url)
     {
         HtmlWeb web = new HtmlWeb();
         HtmlDocument document = web.Load(url);
@@ -12,3 +13,4 @@ public class searchQuizlet : MonoBehaviour
         
     }
 }
+ */
