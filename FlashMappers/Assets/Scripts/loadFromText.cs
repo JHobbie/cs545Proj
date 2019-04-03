@@ -1,21 +1,27 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using UnityEngine.Networking;
+using HtmlAgilityPack;
+using System.Net;
 public class loadFromText : MonoBehaviour
 {
+    public GameObject urlText;
     public GameObject setName;
     public GameObject FlashCard;
     public GameObject firstFlashCard;
     public GameObject lastFlashCard;
     public List<GameObject> cardList = new List<GameObject>();
-    void Start(){
-      cardList.Add(firstFlashCard);
+    void Start()
+    {
+        cardList.Add(firstFlashCard);
     }
-    
+
 
     public void addFlashCard()
     {
@@ -64,4 +70,29 @@ public class loadFromText : MonoBehaviour
         Serializer.Save<Dictionary<string, string>>(name, cardSet);
         SceneManager.LoadScene("game", LoadSceneMode.Single);
     }
+    public void GetText()
+    {
+        string url = urlText.GetComponent<InputField>().text;
+        Debug.Log(url);
+        WebClient web = new WebClient();
+        string html = web.DownloadString(url);
+        HtmlDocument document = new HtmlDocument();
+        document.LoadHtml(html);
+        HtmlNodeCollection flashCardsIterator = document.DocumentNode.SelectSingleNode("//div[@class='SetPage-termsList']").ChildNodes;
+        string currentWord;
+        string currentDef;
+        int i = 0;
+        Debug.Log(flashCardsIterator);
+        foreach (HtmlNode card in flashCardsIterator)
+        {
+            currentWord = card.SelectSingleNode(".//span[contains(@class, 'TermText')]").InnerHtml;
+            currentDef = card.SelectNodes(".//span[contains(@class, 'TermText')]")[1].InnerHtml;
+            cardList[i].transform.Find("Word").GetComponent<InputField>().text = currentWord;
+            cardList[i].transform.Find("Definition").GetComponent<InputField>().text = currentDef;
+            addFlashCard();
+            i++;
+        }
+    }
 }
+
+

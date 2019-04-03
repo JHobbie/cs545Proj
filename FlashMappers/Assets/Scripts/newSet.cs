@@ -21,4 +21,7 @@ public class newSet : MonoBehaviour
     public void loadFromText(){
         SceneManager.LoadScene("loadFromText", LoadSceneMode.Single);
     }
+    public void loadFromQuizlet(){
+        SceneManager.LoadScene("loadFromQuizlet", LoadSceneMode.Single);
+    }
 }
