@@ -77,9 +77,9 @@ public class loadFromText : MonoBehaviour
     }
     public void saveAndPlay()
     {
-        string name = setName.GetComponent<InputField>().text + ".txt";
+        string name = setName.GetComponent<InputField>().text;
         setOfCards cardSet = saveSet();
-        Serializer.Save<setOfCards>(name, cardSet);
+        Serializer.Save<setOfCards>(Serializer.GetSavePath(name), cardSet);
         SceneManager.LoadScene("game", LoadSceneMode.Single);
     }
     public void GetText()

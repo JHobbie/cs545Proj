@@ -35,4 +35,8 @@ public class Serializer
             formatter.Serialize(stream, data);
         }
     }
+    public static string GetSavePath(string name)
+    {
+        return Path.Combine(Application.persistentDataPath, name + ".txt");
+    }
 }
