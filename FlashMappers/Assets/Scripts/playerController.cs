@@ -24,14 +24,16 @@ public class gameRoom : MonoBehaviour
 		7. Timer of some kind (count up)
 		8. Music
     */
+		public GameObject player;
     void Start()
     {
-    	
+    	//player = GameObject.Find("player_tilesheet_0");
     }
 
     // Update is called once per frame
     void Update()
     {
-
+			//player.transform.position += Vector3.right;
     }
+
 }
