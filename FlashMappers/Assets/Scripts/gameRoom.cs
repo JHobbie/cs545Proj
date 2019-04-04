@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gameRoom : MonoBehaviour
 {
@@ -23,14 +24,26 @@ public class gameRoom : MonoBehaviour
 		7. Timer of some kind (count up)
 		8. Music
     */
+		string sceneName;
     void Start()
     {
-        
+    	//labels the current scene
+	    Scene currentScene = SceneManager.GetActiveScene();
+	    //gets the name of the current scene
+	    sceneName = currentScene.name;
+	    //get the game object
+	    GameObject player = GameObject.Find("player_tilesheet_0");
+			GetComponents(player);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+	    if (sceneName == "game"){
+	    	//Do stuff in the game
+	    	transform.forward.x;
+	    }
+
+
     }
 }
