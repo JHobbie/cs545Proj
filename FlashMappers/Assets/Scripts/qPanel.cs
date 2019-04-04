@@ -12,6 +12,7 @@ public class qPanel : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start(){
+        //questionPanel = GameObject.find("QuestionPanel");
         questionPanel.SetActive(false);
     }
 
@@ -21,7 +22,7 @@ public class qPanel : MonoBehaviour {
     }
 
     void DisplayQ (){
-        qPanel.SetActive(true);
+        questionPanel.SetActive(true);
         questionText.text = "question";
         choiceText.text = "3 choices";
     }
