@@ -33,6 +33,7 @@ public class gameRoom : MonoBehaviour
 	    sceneName = currentScene.name;
 	    //get the game object
 	    GameObject player = GameObject.Find("player_tilesheet_0");
+			GetComponents(player);
     }
 
     // Update is called once per frame
@@ -40,7 +41,7 @@ public class gameRoom : MonoBehaviour
     {
 	    if (sceneName == "game"){
 	    	//Do stuff in the game
-	    	
+	    	transform.forward.x;
 	    }
 
 
