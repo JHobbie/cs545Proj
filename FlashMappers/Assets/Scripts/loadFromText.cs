@@ -82,6 +82,12 @@ public class loadFromText : MonoBehaviour
         Serializer.Save<setOfCards>(Serializer.GetSavePath(name), cardSet);
         SceneManager.LoadScene("game", LoadSceneMode.Single);
     }
+    public void saveNoPlay()
+    {
+        string name = setName.GetComponent<InputField>().text;
+        setOfCards cardSet = saveSet();
+        Serializer.Save<setOfCards>(Serializer.GetSavePath(name), cardSet);
+    }
     public void GetText()
     {
         string url = urlText.GetComponent<InputField>().text;
