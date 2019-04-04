@@ -43,9 +43,9 @@ public class loadFromText : MonoBehaviour
             lastFlashCard = temp.transform.parent.gameObject;
         }
     }
-    public Dictionary<string, string> saveSet()
+    public List<string, string> saveSet()
     {
-        Dictionary<string, string> cardSet = new Dictionary<string, string>();
+        Lookup<string, string> cardSet = new Dictionary<string, string>();
         GameObject currentCard;
         string word;
         string definition;
