@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+[Serializable]
 public class flashCard
 {
     private string word;
@@ -21,11 +22,18 @@ public class flashCard
     }
 
 }
+[Serializable]
 public class setOfCards
 {
     private string setName;
     private List<flashCard> allCards;
     private List<flashCard> frequentlyFailed;
+    public setOfCards()
+    {
+        setName = "NamelessSet";
+        allCards = new List<flashCard>();
+        frequentlyFailed = new List<flashCard>();
+    }
     public setOfCards(string setName)
     {
         this.setName = setName;

@@ -43,10 +43,21 @@ public class loadFromText : MonoBehaviour
             lastFlashCard = temp.transform.parent.gameObject;
         }
     }
-    public List<string, string> saveSet()
+    public setOfCards saveSet()
     {
-        Lookup<string, string> cardSet = new Dictionary<string, string>();
+        string nameOfSet;
+        setOfCards cardSet;
+        try
+        {
+            nameOfSet = setName.GetComponent<InputField>().text;
+            cardSet = new setOfCards(nameOfSet);
+        }
+        catch
+        {
+            cardSet  = new setOfCards();
+        }
         GameObject currentCard;
+        flashCard newCard;
         string word;
         string definition;
         for (int i = 0; i < cardList.Count; i++)
@@ -54,7 +65,8 @@ public class loadFromText : MonoBehaviour
             currentCard = cardList[i];
             word = currentCard.transform.Find("Word").gameObject.GetComponent<InputField>().text;
             definition = currentCard.transform.Find("Definition").gameObject.GetComponent<InputField>().text;
-            cardSet.Add(word, definition);
+            newCard = new flashCard(word, definition);
+            cardSet.addCard(newCard);
         }
         return cardSet;
 
@@ -66,31 +78,43 @@ public class loadFromText : MonoBehaviour
     public void saveAndPlay()
     {
         string name = setName.GetComponent<InputField>().text + ".txt";
-        Dictionary<string, string> cardSet = saveSet();
-        Serializer.Save<Dictionary<string, string>>(name, cardSet);
+        setOfCards cardSet = saveSet();
+        Serializer.Save<setOfCards>(name, cardSet);
         SceneManager.LoadScene("game", LoadSceneMode.Single);
     }
     public void GetText()
     {
         string url = urlText.GetComponent<InputField>().text;
-        Debug.Log(url);
         WebClient web = new WebClient();
-        string html = web.DownloadString(url);
-        HtmlDocument document = new HtmlDocument();
-        document.LoadHtml(html);
-        HtmlNodeCollection flashCardsIterator = document.DocumentNode.SelectSingleNode("//div[@class='SetPage-termsList']").ChildNodes;
-        string currentWord;
-        string currentDef;
-        int i = 0;
-        Debug.Log(flashCardsIterator);
-        foreach (HtmlNode card in flashCardsIterator)
+        try
         {
-            currentWord = card.SelectSingleNode(".//span[contains(@class, 'TermText')]").InnerHtml;
-            currentDef = card.SelectNodes(".//span[contains(@class, 'TermText')]")[1].InnerHtml;
-            cardList[i].transform.Find("Word").GetComponent<InputField>().text = currentWord;
-            cardList[i].transform.Find("Definition").GetComponent<InputField>().text = currentDef;
-            addFlashCard();
-            i++;
+            string html = web.DownloadString(url);
+            HtmlDocument document = new HtmlDocument();
+            document.LoadHtml(html);
+            try
+            {
+                HtmlNodeCollection flashCardsIterator = document.DocumentNode.SelectSingleNode("//div[@class='SetPage-termsList']").ChildNodes;
+                string currentWord;
+                string currentDef;
+                int i = 0;
+                foreach (HtmlNode card in flashCardsIterator)
+                {
+                    currentWord = card.SelectSingleNode(".//span[contains(@class, 'TermText')]").InnerHtml;
+                    currentDef = card.SelectNodes(".//span[contains(@class, 'TermText')]")[1].InnerHtml;
+                    cardList[i].transform.Find("Word").GetComponent<InputField>().text = currentWord;
+                    cardList[i].transform.Find("Definition").GetComponent<InputField>().text = currentDef;
+                    addFlashCard();
+                    i++;
+                }
+            }
+            catch (NullReferenceException e)
+            {
+                Debug.Log(e);
+            }
+        }
+        catch
+        {
+            urlText.GetComponent<InputField>().text = "That is not a valid URL";
         }
     }
 }
