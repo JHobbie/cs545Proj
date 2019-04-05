@@ -15,6 +15,7 @@ public class playerMovement : MonoBehaviour
     public Scene currScene;
     void Start()
     {
+        //StartCoroutine(waiter());
         currScene = SceneManager.GetActiveScene();
         fromLeft = true;
         fromRight = false;
@@ -47,5 +48,5 @@ public class playerMovement : MonoBehaviour
             }
         }
     }
-    
+
 }
