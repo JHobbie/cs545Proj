@@ -16,22 +16,10 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         currScene = SceneManager.GetActiveScene();
-        goingLeft = false;
+        goingLeft = true;
         goingRight = false;
         goingUp = false;
         goingDown = false;
-        if(currScene.name == "game"){
-            goingLeft = true;
-        }
-        else if(currScene.name == "game2"){
-            goingRight = true;
-        }
-        else if(currScene.name == "game3"){
-            goingUp = true;
-        }
-        else{
-            goingDown = true;
-        }
     }
 
     // Update is called once per frame
