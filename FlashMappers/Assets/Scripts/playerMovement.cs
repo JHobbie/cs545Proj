@@ -39,16 +39,16 @@ public class playerMovement : MonoBehaviour
     {
         //moving the player until they activate the question
         if(goingLeft){
-            transform.position = new Vector3(transform.position.x + 0.1f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x + 0.3f, transform.position.y, transform.position.z);
         }
         else if(goingRight){
-            transform.position = new Vector3(transform.position.x - 0.1f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x - 0.3f, transform.position.y, transform.position.z);
         }
         else if(goingUp){
-            transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z);
         }
         else{
-            transform.position = new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.3f, transform.position.z);
         }
 
     }
