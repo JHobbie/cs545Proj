@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static setOfCards;
 
 //This is code to display a question in a UI panel 
 public class qPanel : MonoBehaviour {
@@ -21,10 +22,14 @@ public class qPanel : MonoBehaviour {
         //check for current scene, then run DisplayQ
     }
 
+    //private List<setOfCards.flashCard> cardSet = setOfCards.allCards;
+
     void DisplayQ (){
         questionPanel.SetActive(true);
+        //questionText.text = cardSet[1].word;
+        //choiceText.text = carSet[1].definition;
         questionText.text = "question";
-        choiceText.text = "3 choices";
+        choiceText.text = "choices";
     }
     
 }
