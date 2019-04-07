@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class loadSetScreen : MonoBehaviour
 {
     public Dropdown loadDropdown;
-    public setOfCards loadedCards;
+    
     private string saveLocation;
     private List<string> paths;
     // Start is called before the first frame update
@@ -38,7 +38,7 @@ public class loadSetScreen : MonoBehaviour
     public void loadAndPlay()
     {
         string name = paths[loadDropdown.value];
-        loadedCards = Serializer.Load<setOfCards>(Serializer.GetSavePath(name));
+        saveData.loadedCards = Serializer.Load<setOfCards>(Serializer.GetSavePath(name));
         SceneManager.LoadScene("game", LoadSceneMode.Single);
     }
 }

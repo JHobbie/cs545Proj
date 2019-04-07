@@ -80,6 +80,7 @@ public class loadFromText : MonoBehaviour
         string name = setName.GetComponent<InputField>().text;
         setOfCards cardSet = saveSet();
         Serializer.Save<setOfCards>(Serializer.GetSavePath(name), cardSet);
+        saveData.loadedCards = Serializer.Load<setOfCards>(Serializer.GetSavePath(name));
         SceneManager.LoadScene("game", LoadSceneMode.Single);
     }
     public void saveNoPlay()
