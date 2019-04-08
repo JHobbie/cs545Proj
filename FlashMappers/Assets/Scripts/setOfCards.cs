@@ -25,9 +25,9 @@ public class flashCard
 [Serializable]
 public class setOfCards
 {
-    private string setName;
-    private List<flashCard> allCards;
-    private List<flashCard> frequentlyFailed;
+    public string setName;
+    public List<flashCard> allCards;
+    public List<flashCard> frequentlyFailed;
     public setOfCards()
     {
         setName = "NamelessSet";
