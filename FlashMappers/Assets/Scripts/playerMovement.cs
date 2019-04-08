@@ -29,14 +29,16 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(qpanel.isAnswered == true){
-            StartCoroutine(moveAfterAnswer());
+        if(qPanel.isAnswered == true){
+            //StartCoroutine(moveAfterAnswer());
         }
     }
 
-    IEnumerator moveAfterAnswer(){
+/*    IEnumerator moveAfterAnswer(){
         
     }
+    */
+
 /*
     public static void answeredUp(){
         if(fromLeft){
@@ -133,7 +135,7 @@ public class playerMovement : MonoBehaviour
                 StartCoroutine(waitForAnswer());
              */
             }
-            qpanel.DisplayQ();
+            qPanel.DisplayQ();
         }
         else if(fromRight){
             for(float i=transform.position.x; i >= -29f; i-=0.1f){
