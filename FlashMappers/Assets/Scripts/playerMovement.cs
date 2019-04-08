@@ -149,20 +149,20 @@ public class playerMovement : MonoBehaviour
         //moving the player until they activate the question
 
         if(fromLeft){
-            for(float i=transform.position.x; i <= -10.05f; i+=0.1f){
-                if(transform.position.x == -10.05f){
+            for(float i=transform.position.x; i <= -10.5f; i+=0.1f){
+                if(transform.position.x >= -10.5f){
+                    transform.position = new Vector3(-10.5f, transform.position.y, transform.position.z);
                     break;
                 }
                 else{
-                //if(transform.position.x <= -10.05f){
                     transform.position = new Vector3(transform.position.x + speeed, transform.position.y, transform.position.z);
+                    yield return new WaitForSeconds(0.0051f);
                 }
-                yield return new WaitForSeconds(0.0051f);
-            }
             //fromLeft = false;
             /*
                 StartCoroutine(waitForAnswer());
              */
+            }
         }
         else if(fromRight){
             for(float i=transform.position.x; i >= -29f; i-=0.1f){
