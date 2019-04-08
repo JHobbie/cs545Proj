@@ -3,9 +3,9 @@ using System.Collections.Generic;
 [Serializable]
 public class flashCard
 {
-    private string word;
-    private string definition;
-    private bool seenYet;
+    public string word;
+    public string definition;
+    public bool seenYet;
 
     // Constructor that takes no arguments:
     public flashCard()

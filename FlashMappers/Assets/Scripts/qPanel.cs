@@ -23,14 +23,14 @@ public class qPanel : MonoBehaviour {
         //check for current scene, then run DisplayQ
     }
 
-    //private List<setOfCards.flashCard> cardSet = setOfCards.allCards;
+    private setOfCards cardSet = saveData.loadedCards;
 
     void DisplayQ (){
         questionPanel.SetActive(true);
-        //questionText.text = cardSet[1].word;
-        //choiceText.text = carSet[1].definition;
-        questionText.text = "question";
-        choiceText.text = "choices";
+        questionText.text = cardSet.allCards[1].word;
+        choiceText.text = carSet.allcards[1].definition;
+        //questionText.text = "question";
+        //choiceText.text = "choices";
     }
 
     
