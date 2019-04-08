@@ -75,7 +75,7 @@ public class playerMovement : MonoBehaviour
         //moving the player until they activate the question
 
         if(fromLeft){
-            for(float i=transform.position.x; i <= -10.05f; i+=0.2f){
+            for(float i=transform.position.x; i <= -10.05f; i+=0.1f){
                 if(transform.position.x <= -10.05f){
                     transform.position = new Vector3(transform.position.x + speeed, transform.position.y, transform.position.z);
                 }
@@ -85,25 +85,31 @@ public class playerMovement : MonoBehaviour
             //StartCoroutine(waitForAnswer());
         }
         else if(fromRight){
-            for(float i=transform.position.x; i <= -29f; i+=0.2f){
+            for(float i=transform.position.x; i >= -29f; i-=0.1f){
                 if(transform.position.x >= -29f){
                     transform.position = new Vector3(transform.position.x - speeed, transform.position.y, transform.position.z);
                 }
+                yield return new WaitForSeconds(0.0051f);
             }
             fromRight = false;
             //StartCoroutine(waitForAnswer());
         }
         else if(fromBottom){
-            while(transform.position.y != 14f){
-                transform.position = new Vector3(transform.position.x, transform.position.y + speeed, transform.position.z);
-                
+            for(float i=transform.position.y; i <= -14f; i+=0.1f){
+                if(transform.position.y <= -14f){
+                    transform.position = new Vector3(transform.position.x, transform.position.y + speeed, transform.position.z);
+                }
+                yield return new WaitForSeconds(0.0051f);
             }
             fromBottom = false;
             //StartCoroutine(waitForAnswer());
         }
         else if (fromTop){
-            while(transform.position.y != 12.5f){
-                transform.position = new Vector3(transform.position.x, transform.position.y - speeed, transform.position.z);
+            for(float i=transform.position.y; i >= -12.5f; i-=0.2f){
+                if(transform.position.y >= 12.5f){
+                    transform.position = new Vector3(transform.position.x, transform.position.y - speeed, transform.position.z);
+                }
+                yield return new WaitForSeconds(0.0051f);
             }
             fromTop = false;
             //StartCoroutine(waitForAnswer());
