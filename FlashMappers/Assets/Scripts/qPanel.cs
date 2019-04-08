@@ -7,9 +7,9 @@ using static setOfCards;
 //This is code to display a question in a UI panel 
 public class qPanel : MonoBehaviour {
 
-    public GameObject questionPanel;
-    public Text questionText;
-    public Text choiceText;
+    public static GameObject questionPanel;
+    public static Text questionText;
+    public static Text choiceText;
     public static bool isAnswered = false;
 
     // Start is called before the first frame update
@@ -23,7 +23,7 @@ public class qPanel : MonoBehaviour {
         //check for current scene, then run DisplayQ
     }
 
-    private setOfCards cardSet = saveData.loadedCards;
+    private static setOfCards cardSet = saveData.loadedCards;
 
     public static void DisplayQ (){
         questionPanel.SetActive(true);
