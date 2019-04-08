@@ -30,14 +30,42 @@ public class playerMovement : MonoBehaviour
     void Update()
     {
         if(qPanel.isAnswered == true){
-            //StartCoroutine(moveAfterAnswer());
+            StartCoroutine(moveAfterAnswer());
         }
     }
 
-/*    IEnumerator moveAfterAnswer(){
+    IEnumerator moveAfterAnswer(){
+
+        /*
+        top button
+        bottom button
+        left button
+        right button
+
+        in each, check which direction you came from and the direction you are goiong to
+        then flip the bools to work correctly
+         */
         
+        /*
+        if(){
+
+        }
+        else if(){
+
+        }
+        else if(){
+
+        }
+        else if(){
+
+        }
+        else{
+             yield return null;
+        }
+        */
+        yield return null;
     }
-    */
+    
 
 /*
     public static void answeredUp(){
