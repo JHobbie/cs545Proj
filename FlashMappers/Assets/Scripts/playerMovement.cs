@@ -29,44 +29,13 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        //moving the player until they activate the question
-        if(fromLeft){
-            for(float i=transform.position.x; i <= -10.05f; i+=0.05f){
-                if(transform.position.x != -10.05){
-                    transform.position = new Vector3(transform.position.x + 0.05f, transform.position.y, transform.position.z);
-                }
-                //WaitForSeconds(1);
-            }
-            fromLeft = false;
-            //StartCoroutine(waitForAnswer());
+        if(qpanel.isAnswered == true){
+            StartCoroutine(moveAfterAnswer());
         }
-        else if(fromRight){
-            while(transform.position.x != 29f){
-                transform.position = new Vector3(transform.position.x - 0.05f, transform.position.y, transform.position.z);
-            }
-            fromRight = false;
-            //StartCoroutine(waitForAnswer());
-        }
-        else if(fromBottom){
-            while(transform.position.y != 14f){
-                transform.position = new Vector3(transform.position.x, transform.position.y + 0.05f, transform.position.z);
-                
-            }
-            fromBottom = false;
-            //StartCoroutine(waitForAnswer());
-        }
-        else if (fromTop){
-            while(transform.position.y != 12.5){
-                transform.position = new Vector3(transform.position.x, transform.position.y - 0.05f, transform.position.z);
-            }
-            fromTop = false;
-            //StartCoroutine(waitForAnswer());
-        }
-        else{
-            return;
-        }
-        */
+    }
+
+    IEnumerator moveAfterAnswer(){
+        
     }
 /*
     public static void answeredUp(){
@@ -158,6 +127,7 @@ public class playerMovement : MonoBehaviour
                     transform.position = new Vector3(transform.position.x + speeed, transform.position.y, transform.position.z);
                     yield return new WaitForSeconds(0.0051f);
                 }
+                qpanel.DisplayQ();
             //fromLeft = false;
             /*
                 StartCoroutine(waitForAnswer());
