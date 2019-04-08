@@ -113,14 +113,14 @@ public class playerMovement : MonoBehaviour
     }
 */
     
-    IEnumerator waitForAnswer(){
+/*     IEnumerator waitForAnswer(){
         yield return new WaitForSeconds(1);
-    }
+    } */
     IEnumerator waitForOne(){
         //moving the player until they activate the question
 
         if(fromLeft){
-            for(float i=transform.position.x; i <= -10.5f; i+=0.1f){
+            for(int i = 0; i< 1000; i++){
                 if(transform.position.x >= -10.5f){
                     transform.position = new Vector3(-10.5f, transform.position.y, transform.position.z);
                     break;
@@ -129,43 +129,47 @@ public class playerMovement : MonoBehaviour
                     transform.position = new Vector3(transform.position.x + speeed, transform.position.y, transform.position.z);
                     yield return new WaitForSeconds(0.0051f);
                 }
-                
-            //fromLeft = false;
-            /*
-                StartCoroutine(waitForAnswer());
-             */
             }
             qPanel.DisplayQ();
         }
         else if(fromRight){
-            for(float i=transform.position.x; i >= -29f; i-=0.1f){
-                if(transform.position.x >= -29f){
-                    transform.position = new Vector3(transform.position.x - speeed, transform.position.y, transform.position.z);
+            for(int i = 0; i< 1000; i++){
+                if(transform.position.x <= -29f){
+                    transform.position = new Vector3(-29f, transform.position.y, transform.position.z);
+                    break;
                 }
-                yield return new WaitForSeconds(0.0051f);
+                else{
+                    transform.position = new Vector3(transform.position.x - speeed, transform.position.y, transform.position.z);
+                    yield return new WaitForSeconds(0.0051f);
+                }
             }
-            fromRight = false;
-            //StartCoroutine(waitForAnswer());
+            qPanel.DisplayQ();
         }
         else if(fromBottom){
-            for(float i=transform.position.y; i <= -14f; i+=0.1f){
-                if(transform.position.y <= -14f){
-                    transform.position = new Vector3(transform.position.x, transform.position.y + speeed, transform.position.z);
+            for(int i = 0; i< 1000; i++){
+                if(transform.position.y <= 14f){
+                    transform.position = new Vector3(transform.position.x, 14f, transform.position.z);
+                    break;
                 }
-                yield return new WaitForSeconds(0.0051f);
+                else{
+                     transform.position = new Vector3(transform.position.x, transform.position.y + speeed, transform.position.z);
+                     yield return new WaitForSeconds(0.0051f);
+                }
             }
-            fromBottom = false;
-            //StartCoroutine(waitForAnswer());
+            qPanel.DisplayQ();
         }
         else if (fromTop){
-            for(float i=transform.position.y; i >= -12.5f; i-=0.2f){
+            for(int i = 0; i< 1000; i++){
                 if(transform.position.y >= 12.5f){
-                    transform.position = new Vector3(transform.position.x, transform.position.y - speeed, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, 12.5f, transform.position.z);
+                    break;
                 }
-                yield return new WaitForSeconds(0.0051f);
+                else{
+                    transform.position = new Vector3(transform.position.x, transform.position.y - speeed, transform.position.z);
+                    yield return new WaitForSeconds(0.0051f);
+                }
             }
-            fromTop = false;
-            //StartCoroutine(waitForAnswer());
+            qPanel.DisplayQ();
         }
         else{
             yield return null;
