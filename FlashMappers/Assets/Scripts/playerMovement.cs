@@ -13,7 +13,7 @@ public class playerMovement : MonoBehaviour
     public static bool fromBottom;
     private float speeed = 0.2f;
 
-    public
+    //public void waitForOne();
     //public Scene currScene;
     void Start()
     {
@@ -68,7 +68,7 @@ public class playerMovement : MonoBehaviour
         }
         */
     }
-
+/*
     public static void answeredUp(){
         if(fromLeft){
             //
@@ -140,7 +140,7 @@ public class playerMovement : MonoBehaviour
         }
         StartCoroutine(waitForOne());
     }
-
+*/
     
     IEnumerator waitForAnswer(){
         yield return new WaitForSeconds(1);
