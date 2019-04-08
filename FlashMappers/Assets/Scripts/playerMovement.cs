@@ -127,12 +127,13 @@ public class playerMovement : MonoBehaviour
                     transform.position = new Vector3(transform.position.x + speeed, transform.position.y, transform.position.z);
                     yield return new WaitForSeconds(0.0051f);
                 }
-                qpanel.DisplayQ();
+                
             //fromLeft = false;
             /*
                 StartCoroutine(waitForAnswer());
              */
             }
+            qpanel.DisplayQ();
         }
         else if(fromRight){
             for(float i=transform.position.x; i >= -29f; i-=0.1f){
