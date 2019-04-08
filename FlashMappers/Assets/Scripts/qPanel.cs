@@ -29,10 +29,14 @@ public class qPanel : MonoBehaviour {
         questionPanel.SetActive(true);
         //questionText.text = cardSet.allCards[0].word;
         //choiceText.text = cardSet.allCards[0].definition;
-        if(questionPanel.GetComponent<UnityEngine.UI.Text>().text == null){
-            Debug.Log("why");
-        }
+        //if(questionPanel.GetComponent<UnityEngine.UI.Text>().text == null){
+        //    Debug.Log("why");
+        //}
         //choiceText.text = "choices";
+        Debug.Log("hi");
+        /* the console says "hi" when the player stops, but when I try to display
+        the text from the flashcard it gives a NullReferenceError. */
+        
     }
 
     
