@@ -25,7 +25,7 @@ public class qPanel : MonoBehaviour {
 
     private setOfCards cardSet = saveData.loadedCards;
 
-    public void DisplayQ (){
+    public static void DisplayQ (){
         questionPanel.SetActive(true);
         questionText.text = cardSet.allCards[1].word;
         choiceText.text = cardSet.allCards[1].definition;
