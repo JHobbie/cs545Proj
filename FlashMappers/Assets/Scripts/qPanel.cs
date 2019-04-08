@@ -14,8 +14,8 @@ public class qPanel : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start(){
-        //questionPanel = GameObject.find("QuestionPanel");
-        //questionPanel.SetActive(false);
+        questionPanel = GameObject.Find("QuestionPanel");
+        questionPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,12 +26,13 @@ public class qPanel : MonoBehaviour {
     private static setOfCards cardSet = saveData.loadedCards;
 
     public static void DisplayQ (){
-        //questionPanel.SetActive(true);
-        questionText.text = cardSet.allCards[0].word;
-        choiceText.text = cardSet.allCards[0].definition;
-        //questionText.text = "question";
+        questionPanel.SetActive(true);
+        //questionText.text = cardSet.allCards[0].word;
+        //choiceText.text = cardSet.allCards[0].definition;
+        if(questionPanel.GetComponent<UnityEngine.UI.Text>().text == null){
+            Debug.Log("why");
+        }
         //choiceText.text = "choices";
-        Debug.Log("we made it.");
     }
 
     
