@@ -10,6 +10,7 @@ public class qPanel : MonoBehaviour {
     public GameObject questionPanel;
     public Text questionText;
     public Text choiceText;
+    public static bool isAnswered = false;
 
     // Start is called before the first frame update
     void Start(){
@@ -31,5 +32,7 @@ public class qPanel : MonoBehaviour {
         questionText.text = "question";
         choiceText.text = "choices";
     }
+
+    
     
 }
