@@ -31,6 +31,8 @@ public class diamondButtons : MonoBehaviour
         
     }
 
+    //scale = 1.703812 for each
+
     public static void toggleButtonsOff(){
         topButton.SetActive(false);
         bottomButton.SetActive(false);
