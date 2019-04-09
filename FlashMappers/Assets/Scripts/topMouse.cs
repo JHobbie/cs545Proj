@@ -17,6 +17,9 @@ public class topMouse : MonoBehaviour
     }
 
     void OnMouseDown(){
-       Debug.Log("top"); 
+        diamondButtons.leftButton.SetActive(false);
+        diamondButtons.rightButton.SetActive(false);
+        diamondButtons.bottomButton.SetActive(false);
+        Debug.Log("top"); 
     }
 }

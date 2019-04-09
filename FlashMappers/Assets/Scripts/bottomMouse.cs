@@ -16,6 +16,9 @@ public class bottomMouse : MonoBehaviour
         
     }
     void OnMouseDown(){
-       Debug.Log("bottom"); 
+        diamondButtons.leftButton.SetActive(false);
+        diamondButtons.rightButton.SetActive(false);
+        diamondButtons.topButton.SetActive(false);
+        Debug.Log("bottom");
     }
 }

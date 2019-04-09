@@ -42,23 +42,6 @@ public class playerMovement : MonoBehaviour
         then flip the bools to work correctly
          */
         
-        /*
-        if(){
-
-        }
-        else if(){
-
-        }
-        else if(){
-
-        }
-        else if(){
-
-        }
-        else{
-             yield return null;
-        }
-        */
         yield return null;
     }
     
@@ -91,6 +74,7 @@ public class playerMovement : MonoBehaviour
                     yield return new WaitForSeconds(0.0051f);
                 }
             }
+            diamondButtons.toggleRight();
             qPanel.DisplayQ();
         }
         else if(fromBottom){
@@ -104,6 +88,7 @@ public class playerMovement : MonoBehaviour
                      yield return new WaitForSeconds(0.0051f);
                 }
             }
+            diamondButtons.toggleBottom();
             qPanel.DisplayQ();
         }
         else if (fromTop){
@@ -117,6 +102,7 @@ public class playerMovement : MonoBehaviour
                     yield return new WaitForSeconds(0.0051f);
                 }
             }
+            diamondButtons.toggleTop();
             qPanel.DisplayQ();
         }
         else{

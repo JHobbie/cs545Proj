@@ -10,6 +10,10 @@ public class diamondButtons : MonoBehaviour
     public static GameObject rightButton;
     public static GameObject bottomButton;
 
+    public static Sprite letterA;
+    public static Sprite letterB;
+    public static Sprite letterC;
+
     void Start()
     {
         topButton = GameObject.FindGameObjectsWithTag("TopButton")[0];
@@ -21,6 +25,10 @@ public class diamondButtons : MonoBehaviour
         bottomButton.SetActive(false);
         rightButton.SetActive(false);
         leftButton.SetActive(false);
+
+        letterA = Resources.Load<Sprite>("letter_A");
+        letterB = Resources.Load<Sprite>("letter_B");
+        letterC = Resources.Load<Sprite>("letter_C");
 
         //Debug.Log();
     }
@@ -45,6 +53,11 @@ public class diamondButtons : MonoBehaviour
         bottomButton.SetActive(true);
         rightButton.SetActive(true);
         leftButton.SetActive(true);
+
+        leftButton.GetComponent<SpriteRenderer>().sprite = letterA;
+        bottomButton.GetComponent<SpriteRenderer>().sprite = letterB;
+        rightButton.GetComponent<SpriteRenderer>().sprite = letterC;
+        
     }
 
     public static void toggleBottom(){
@@ -52,6 +65,10 @@ public class diamondButtons : MonoBehaviour
         bottomButton.SetActive(false);
         rightButton.SetActive(true);
         leftButton.SetActive(true);
+
+        leftButton.GetComponent<SpriteRenderer>().sprite = letterA;
+        topButton.GetComponent<SpriteRenderer>().sprite = letterB;
+        rightButton.GetComponent<SpriteRenderer>().sprite = letterC;
     }
 
     public static void toggleRight(){
@@ -59,6 +76,10 @@ public class diamondButtons : MonoBehaviour
         bottomButton.SetActive(true);
         rightButton.SetActive(false);
         leftButton.SetActive(true);
+
+        topButton.GetComponent<SpriteRenderer>().sprite = letterA;
+        leftButton.GetComponent<SpriteRenderer>().sprite = letterB;
+        bottomButton.GetComponent<SpriteRenderer>().sprite = letterC;
     }
 
     public static void toggleLeft(){
@@ -66,5 +87,9 @@ public class diamondButtons : MonoBehaviour
         bottomButton.SetActive(true);
         rightButton.SetActive(true);
         leftButton.SetActive(false);
+
+        topButton.GetComponent<SpriteRenderer>().sprite = letterA;
+        rightButton.GetComponent<SpriteRenderer>().sprite = letterB;
+        bottomButton.GetComponent<SpriteRenderer>().sprite = letterC;
     }
 }
