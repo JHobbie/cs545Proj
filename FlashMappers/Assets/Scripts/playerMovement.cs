@@ -11,7 +11,9 @@ public class playerMovement : MonoBehaviour
     public static bool fromRight;
     public static bool fromTop;
     public static bool fromBottom;
-    private float speeed = 0.2f;
+    public static float speeed = 0.2f;
+
+    public static GameObject player;
 
     void Start()
     {
@@ -19,44 +21,32 @@ public class playerMovement : MonoBehaviour
         fromRight = false;
         fromTop = false;
         fromBottom = false;
+        player = GameObject.Find("player_tilesheet_0");
         StartCoroutine(waitForOne());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(qPanel.isAnswered == true){
-            StartCoroutine(moveAfterAnswer());
-        }
+        
     }
 
-    IEnumerator moveAfterAnswer(){
-
-        /*
-        top button
-        bottom button
-        left button
-        right button
-
-        in each, check which direction you came from and the direction you are goiong to
-        then flip the bools to work correctly
-         */
-        
-        yield return null;
+    private static IEnumerator waitASec(){
+        yield return new WaitForSeconds(0.0051f);
     }
     
 
-    IEnumerator waitForOne(){
+    private static IEnumerator waitForOne(){
         //moving the player until they activate the question
 
         if(fromLeft){
             for(int i = 0; i< 1000; i++){
-                if(transform.position.x >= -10.5f){
-                    transform.position = new Vector3(-10.5f, transform.position.y, transform.position.z);
+                if(player.transform.position.x >= -10.5f){
+                    player.transform.position = new Vector3(-10.5f, player.transform.position.y, player.transform.position.z);
                     break;
                 }
                 else{
-                    transform.position = new Vector3(transform.position.x + speeed, transform.position.y, transform.position.z);
+                    player.transform.position = new Vector3(player.transform.position.x + speeed, player.transform.position.y, player.transform.position.z);
                     yield return new WaitForSeconds(0.0051f);
                 }
             }
@@ -65,12 +55,12 @@ public class playerMovement : MonoBehaviour
         }
         else if(fromRight){
             for(int i = 0; i< 1000; i++){
-                if(transform.position.x <= -29f){
-                    transform.position = new Vector3(-29f, transform.position.y, transform.position.z);
+                if(player.transform.position.x <= -29f){
+                    player.transform.position = new Vector3(-29f, player.transform.position.y, player.transform.position.z);
                     break;
                 }
                 else{
-                    transform.position = new Vector3(transform.position.x - speeed, transform.position.y, transform.position.z);
+                    player.transform.position = new Vector3(player.transform.position.x - speeed, player.transform.position.y, player.transform.position.z);
                     yield return new WaitForSeconds(0.0051f);
                 }
             }
@@ -79,12 +69,12 @@ public class playerMovement : MonoBehaviour
         }
         else if(fromBottom){
             for(int i = 0; i< 1000; i++){
-                if(transform.position.y <= 14f){
-                    transform.position = new Vector3(transform.position.x, 14f, transform.position.z);
+                if(player.transform.position.y <= 14f){
+                    player.transform.position = new Vector3(player.transform.position.x, 14f, player.transform.position.z);
                     break;
                 }
                 else{
-                     transform.position = new Vector3(transform.position.x, transform.position.y + speeed, transform.position.z);
+                     player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + speeed, player.transform.position.z);
                      yield return new WaitForSeconds(0.0051f);
                 }
             }
@@ -93,12 +83,12 @@ public class playerMovement : MonoBehaviour
         }
         else if (fromTop){
             for(int i = 0; i< 1000; i++){
-                if(transform.position.y >= 12.5f){
-                    transform.position = new Vector3(transform.position.x, 12.5f, transform.position.z);
+                if(player.transform.position.y >= 12.5f){
+                    player.transform.position = new Vector3(player.transform.position.x, 12.5f, player.transform.position.z);
                     break;
                 }
                 else{
-                    transform.position = new Vector3(transform.position.x, transform.position.y - speeed, transform.position.z);
+                    player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - speeed, player.transform.position.z);
                     yield return new WaitForSeconds(0.0051f);
                 }
             }
@@ -109,5 +99,60 @@ public class playerMovement : MonoBehaviour
             yield return null;
         }
     }
+
+    public static void moveUp(){
+        
+        if(fromLeft){
+            //move to right then go up
+            for(int i=0; i<2000; i++){
+                if(player.transform.position.x < 10.5f){
+                    player.transform.position = new Vector3(player.transform.position.x + speeed, player.transform.position.y, player.transform.position.z);
+                    new WaitForSeconds(0.0051f);
+                }
+                else if(player.transform.position.y < 26){
+                    player.transform.position = new Vector3(10.5f, player.transform.position.y + speeed, player.transform.position.z);
+                    new WaitForSeconds(0.0051f);
+                }
+                else{
+                    player.transform.position = new Vector3(10.5f, -26f, player.transform.position.z);
+                    fromLeft = false;
+                    fromRight = false;
+                    fromTop = false;
+                    fromBottom = true;
+                    new WaitForSeconds(0.0051f);
+                    break;
+                }
+            }
+        }
+        /*
+        else if(fromRight){
+            //move to left then go up
+            for(int i=0; i<2000; i++){
+                if(transform.position.x < 10.5f){
+                    transfrom.position = new Vector3(transform.position.x + speeed, transform.position.y, transform.position.z);
+                    yield return new WaitForSeconds(0.0051f);
+                }
+                else if(transform.position.y < 26){
+                    transfrom.position = new Vector3(10.5f, transform.position.y + speed, transform.position.z);
+                    yield return new WaitForSeconds(0.0051f);
+                }
+                else{
+                    transform.position = new Vector3(10.5f, -26f, transform.position.z);
+                    fromLeft = false;
+                    fromRight = false;
+                    fromTop = false;
+                    fromBottom = true;
+                    StartCoroutine(waitForOne());
+                    break;
+                }
+            }
+        }
+        else{
+
+        }
+        */
+    }
+
+    
 
 }
