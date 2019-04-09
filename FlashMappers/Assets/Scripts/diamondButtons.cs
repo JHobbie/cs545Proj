@@ -30,4 +30,39 @@ public class diamondButtons : MonoBehaviour
     {
         
     }
+
+    public static void toggleButtonsOff(){
+        topButton.SetActive(false);
+        bottomButton.SetActive(false);
+        rightButton.SetActive(false);
+        leftButton.SetActive(false);
+    }
+
+    public static void toggleTop(){
+        topButton.SetActive(false);
+        bottomButton.SetActive(true);
+        rightButton.SetActive(true);
+        leftButton.SetActive(true);
+    }
+
+    public static void toggleBottom(){
+        topButton.SetActive(true);
+        bottomButton.SetActive(false);
+        rightButton.SetActive(true);
+        leftButton.SetActive(true);
+    }
+
+    public static void toggleRight(){
+        topButton.SetActive(true);
+        bottomButton.SetActive(true);
+        rightButton.SetActive(false);
+        leftButton.SetActive(true);
+    }
+
+    public static void toggleLeft(){
+        topButton.SetActive(true);
+        bottomButton.SetActive(true);
+        rightButton.SetActive(true);
+        leftButton.SetActive(false);
+    }
 }
