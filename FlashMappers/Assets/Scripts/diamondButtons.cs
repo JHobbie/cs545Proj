@@ -14,8 +14,8 @@ public class diamondButtons : MonoBehaviour
     {
         topButton = GameObject.FindGameObjectsWithTag("TopButton")[0];
         bottomButton = GameObject.FindGameObjectsWithTag("BottomButton")[0];
-        rightButton = GameObject.FindGameObjectsWithTag("LeftButton")[0];
-        leftButton = GameObject.FindGameObjectsWithTag("RightButton")[0];
+        leftButton = GameObject.FindGameObjectsWithTag("LeftButton")[0];
+        rightButton = GameObject.FindGameObjectsWithTag("RightButton")[0];
 
         topButton.SetActive(false);
         bottomButton.SetActive(false);

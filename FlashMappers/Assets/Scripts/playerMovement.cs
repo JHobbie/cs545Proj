@@ -6,19 +6,15 @@ using UnityEngine.SceneManagement;
 public class playerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
-    //public GameObject player;
+    
     public static bool fromLeft;
     public static bool fromRight;
     public static bool fromTop;
     public static bool fromBottom;
     private float speeed = 0.2f;
 
-    //public void waitForOne();
-    //public Scene currScene;
     void Start()
     {
-        //StartCoroutine(waiter());
-        //currScene = SceneManager.GetActiveScene();
         fromLeft = true;
         fromRight = false;
         fromTop = false;
@@ -67,83 +63,6 @@ public class playerMovement : MonoBehaviour
     }
     
 
-/*
-    public static void answeredUp(){
-        if(fromLeft){
-            //
-            //movement code for going right then
-        }
-        else if(fromRight){
-
-        }
-        else if(fromBottom){
-
-        }
-        //fromTop
-        else{
-
-        }
-        StartCoroutine(waitForOne());
-    }
-
-    public static void answeredDown(){
-        if(fromLeft){
-            //
-            //movement code for going right then
-        }
-        else if(fromRight){
-
-        }
-        else if(fromBottom){
-
-        }
-        //fromTop
-        else{
-
-        }
-        StartCoroutine(waitForOne());
-    }
-
-    public static void answeredLeft(){
-        if(fromLeft){
-            //
-            //movement code for going right then
-        }
-        else if(fromRight){
-
-        }
-        else if(fromBottom){
-
-        }
-        //fromTop
-        else{
-
-        }
-        StartCoroutine(waitForOne());
-    }
-
-    public static void answeredRight(){
-        if(fromLeft){
-            //
-            //movement code for going right then
-        }
-        else if(fromRight){
-
-        }
-        else if(fromBottom){
-
-        }
-        //fromTop
-        else{
-
-        }
-        StartCoroutine(waitForOne());
-    }
-*/
-    
-/*     IEnumerator waitForAnswer(){
-        yield return new WaitForSeconds(1);
-    } */
     IEnumerator waitForOne(){
         //moving the player until they activate the question
 
@@ -158,6 +77,7 @@ public class playerMovement : MonoBehaviour
                     yield return new WaitForSeconds(0.0051f);
                 }
             }
+            diamondButtons.toggleLeft();
             qPanel.DisplayQ();
         }
         else if(fromRight){
