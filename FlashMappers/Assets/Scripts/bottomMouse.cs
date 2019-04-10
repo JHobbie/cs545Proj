@@ -19,6 +19,7 @@ public class bottomMouse : MonoBehaviour
         diamondButtons.leftButton.SetActive(false);
         diamondButtons.rightButton.SetActive(false);
         diamondButtons.topButton.SetActive(false);
+        playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveDown());
         Debug.Log("bottom");
     }
 }

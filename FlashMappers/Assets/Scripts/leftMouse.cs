@@ -20,6 +20,7 @@ public class leftMouse : MonoBehaviour
         diamondButtons.bottomButton.SetActive(false);
         diamondButtons.rightButton.SetActive(false);
         diamondButtons.topButton.SetActive(false);
+        playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveLeft());
         Debug.Log("left"); 
     }
 }

@@ -20,7 +20,7 @@ public class topMouse : MonoBehaviour
         diamondButtons.leftButton.SetActive(false);
         diamondButtons.rightButton.SetActive(false);
         diamondButtons.bottomButton.SetActive(false);
-        playerMovement.moveUp();
+        playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveUp());
         Debug.Log("top"); 
     }
 }

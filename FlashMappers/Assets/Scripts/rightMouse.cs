@@ -20,6 +20,7 @@ public class rightMouse : MonoBehaviour
         diamondButtons.leftButton.SetActive(false);
         diamondButtons.bottomButton.SetActive(false);
         diamondButtons.topButton.SetActive(false);
+        playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveRight());
         Debug.Log("right"); 
     }
 }
