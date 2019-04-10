@@ -11,7 +11,7 @@ public class playerMovement : MonoBehaviour
     public static bool fromRight;
     public static bool fromTop;
     public static bool fromBottom;
-    public static float speeed = 0.2f;
+    public static float speeed = 0.6f;
 
     public static GameObject player;
 
