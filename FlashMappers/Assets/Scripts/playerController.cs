@@ -33,7 +33,7 @@ public class gameRoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-			//player.transform.position += Vector3.right;
+			
     }
 
 }
