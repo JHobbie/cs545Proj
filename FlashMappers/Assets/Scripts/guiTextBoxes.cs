@@ -33,6 +33,10 @@ public class guiTextBoxes : MonoBehaviour
     }
 
     public static void turnOn(){
+        //Generate Random Question
+        //GEt answer
+        //Select which box answer goes in
+        //After answer selected fill in boxes from A-C
         Camera.main.GetComponent<guiBottomLeft>().enabled = true;
         Camera.main.GetComponent<guiBottomRight>().enabled = true;
         Camera.main.GetComponent<guiTopRight>().enabled = true;
