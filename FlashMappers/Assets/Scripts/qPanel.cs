@@ -13,17 +13,17 @@ public class qPanel : MonoBehaviour {
     //public static bool isAnswered = false;
 
     // Start is called before the first frame update
+    //public static setOfCards cardSet = saveData.loadedCards.allCards;
     void Start(){
         //questionPanel = GameObject.Find("QuestionPanel");
         //questionPanel.SetActive(false);
+        
     }
 
     // Update is called once per frame
     void Update(){
         //check for current scene, then run DisplayQ
     }
-
-    private static setOfCards cardSet = saveData.loadedCards;
 
     public static void DisplayQ (){
         //questionPanel.SetActive(true);
@@ -34,7 +34,7 @@ public class qPanel : MonoBehaviour {
         //    Debug.Log("why");
         //}
         //choiceText.text = "choices";
-        Debug.Log("hi");
+        //Debug.Log("hi");
         /* the console says "hi" when the player stops, but when I try to display
         the text from the flashcard it gives a NullReferenceError. */
         

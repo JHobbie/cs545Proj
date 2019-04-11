@@ -30,15 +30,10 @@ public class playerMovement : MonoBehaviour
     {
         
     }
-
-    private static IEnumerator waitASec(){
-        yield return new WaitForSeconds(0.0051f);
-    }
     
-
     private static IEnumerator waitForOne(){
         //moving the player until they activate the question
-
+        guiTextBoxes.turnOff();
         if(fromLeft){
             for(int i = 0; i< 1000; i++){
                 if(player.transform.position.x >= -10.5f){
@@ -51,7 +46,7 @@ public class playerMovement : MonoBehaviour
                 }
             }
             diamondButtons.toggleLeft();
-            qPanel.DisplayQ();
+            guiTextBoxes.turnOn();
         }
         else if(fromRight){
             for(int i = 0; i< 1000; i++){
@@ -65,7 +60,7 @@ public class playerMovement : MonoBehaviour
                 }
             }
             diamondButtons.toggleRight();
-            qPanel.DisplayQ();
+            guiTextBoxes.turnOn();
         }
         else if(fromBottom){
             for(int i = 0; i< 1000; i++){
@@ -79,7 +74,7 @@ public class playerMovement : MonoBehaviour
                 }
             }
             diamondButtons.toggleBottom();
-            qPanel.DisplayQ();
+            guiTextBoxes.turnOn();
         }
         else if (fromTop){
             for(int i = 0; i< 1000; i++){
@@ -93,7 +88,7 @@ public class playerMovement : MonoBehaviour
                 }
             }
             diamondButtons.toggleTop();
-            qPanel.DisplayQ();
+            guiTextBoxes.turnOn();
         }
         else{
             yield return null;
