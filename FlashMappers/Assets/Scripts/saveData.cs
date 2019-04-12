@@ -6,4 +6,6 @@ public class saveData
     public static int questionSlot;
     public static flashCard wrongCard1;
     public static flashCard wrongCard2;
+
+    public static int selectedAnswer;
 }
