@@ -17,22 +17,16 @@ public class guiBottomRight : MonoBehaviour
     }
 
     void OnGUI(){
-        if(playerMovement.fromLeft){
-            GUI.Box(new Rect(Screen.width/3 * 2 - 60, Screen.height/3 * 2 + 12, Screen.width/3 + 60, Screen.height/3 - 12), "B: " + saveData.loadedCards.allCards[0].definition);
-        }
-        else if(playerMovement.fromRight){
-            GUI.Box(new Rect(Screen.width/3 * 2 - 60, Screen.height/3 * 2 + 12, Screen.width/3 + 60, Screen.height/3 - 12), "C: " + saveData.loadedCards.allCards[0].definition);
-
-        }
-        else if(playerMovement.fromTop){
-            GUI.Box(new Rect(Screen.width/3 * 2 - 60, Screen.height/3 * 2 + 12, Screen.width/3 + 60, Screen.height/3 - 12), "B: " + saveData.loadedCards.allCards[0].definition);
-        }
-        else if(playerMovement.fromBottom){
-            GUI.Box(new Rect(Screen.width/3 * 2 - 60, Screen.height/3 * 2 + 12, Screen.width/3 + 60, Screen.height/3 - 12), "C: " + saveData.loadedCards.allCards[0].definition);
+        if(saveData.questionSlot == 3){
+            GUI.Box(new Rect(Screen.width/3 * 2 - 60, Screen.height/3 * 2 + 12, Screen.width/3 + 60, Screen.height/3 - 12), "C: " + saveData.chosenCard.definition);
         }
         else{
-            return;
+            System.Random rnd = new System.Random();
+            flashCard displayedCard = saveData.loadedCards.allCards[rnd.Next(1,saveData.loadedCards.allCards.Count)];
+            while(displayedCard == saveData.chosenCard){
+                displayedCard = saveData.loadedCards.allCards[rnd.Next(1,saveData.loadedCards.allCards.Count)];
+            }
+            GUI.Box(new Rect(Screen.width/3 * 2 - 60, Screen.height/3 * 2 + 12, Screen.width/3 + 60, Screen.height/3 - 12), "C: " + displayedCard.definition);
         }
-
     }
 }

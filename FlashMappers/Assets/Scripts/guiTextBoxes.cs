@@ -37,6 +37,12 @@ public class guiTextBoxes : MonoBehaviour
         //GEt answer
         //Select which box answer goes in
         //After answer selected fill in boxes from A-C
+        System.Random rnd = new System.Random();
+        saveData.chosenCard = saveData.loadedCards.allCards[rnd.Next(1, saveData.loadedCards.allCards.Count)];
+        while(saveData.chosenCard.seenYet==true && saveData.loadedCards.allSeen==false){
+            saveData.chosenCard = saveData.loadedCards.allCards[rnd.Next(1, saveData.loadedCards.allCards.Count)];
+        }
+        saveData.questionSlot  = rnd.Next(1, 4);
         Camera.main.GetComponent<guiBottomLeft>().enabled = true;
         Camera.main.GetComponent<guiBottomRight>().enabled = true;
         Camera.main.GetComponent<guiTopRight>().enabled = true;

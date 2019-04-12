@@ -28,6 +28,7 @@ public class setOfCards
     public string setName;
     public List<flashCard> allCards;
     public List<flashCard> frequentlyFailed;
+    public bool allSeen;
     public setOfCards()
     {
         setName = "NamelessSet";
