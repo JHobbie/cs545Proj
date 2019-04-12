@@ -14,26 +14,36 @@ public class leftMouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void OnMouseDown(){
+    void OnMouseDown()
+    {
         diamondButtons.bottomButton.SetActive(false);
         diamondButtons.rightButton.SetActive(false);
         diamondButtons.topButton.SetActive(false);
-        if(playerMovement.fromTop){
+        if (playerMovement.fromTop)
+        {
+            mainCam.GetComponent<guiBottomLeft>().enabled = false;
+            mainCam.GetComponent<guiBottomRight>().enabled = false;
+            saveData.selectedAnswer = 1;
+        }
+        else if (playerMovement.fromBottom)
+        {
+            mainCam.GetComponent<guiBottomLeft>().enabled = false;
+            mainCam.GetComponent<guiBottomRight>().enabled = false;
+            saveData.selectedAnswer = 1;
+        }
+        else
+        {
             mainCam.GetComponent<guiTopRight>().enabled = false;
             mainCam.GetComponent<guiBottomRight>().enabled = false;
+            saveData.selectedAnswer = 2;
         }
-        else if(playerMovement.fromBottom){
-            mainCam.GetComponent<guiTopRight>().enabled = false;
-            mainCam.GetComponent<guiBottomRight>().enabled = false;
-        }
-        else{
-            mainCam.GetComponent<guiTopRight>().enabled = false;
-            mainCam.GetComponent<guiBottomRight>().enabled = false;
-        }
+        if(saveData.selectedAnswer == saveData.questionSlot){
+                saveData.chosenCard.seenYet=true;
+            }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveLeft());
-        Debug.Log("left"); 
+        Debug.Log("left");
     }
 }

@@ -24,15 +24,21 @@ public class topMouse : MonoBehaviour
         if(playerMovement.fromLeft){
             mainCam.GetComponent<guiBottomLeft>().enabled = false;
             mainCam.GetComponent<guiBottomRight>().enabled = false;
+            saveData.selectedAnswer=1;
         }
         else if(playerMovement.fromRight){
-            mainCam.GetComponent<guiBottomLeft>().enabled = false;
-            mainCam.GetComponent<guiBottomLeft>().enabled = false;
+             mainCam.GetComponent<guiBottomLeft>().enabled = false;
+            mainCam.GetComponent<guiBottomRight>().enabled = false;
+            saveData.selectedAnswer=1;
         }
         else{
-            mainCam.GetComponent<guiBottomLeft>().enabled = false;
+            mainCam.GetComponent<guiTopRight>().enabled = false;
             mainCam.GetComponent<guiBottomRight>().enabled = false;
+            saveData.selectedAnswer=2;
         }
+        if(saveData.selectedAnswer == saveData.questionSlot){
+                saveData.chosenCard.seenYet=true;
+            }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveUp());
         Debug.Log("top"); 
     }
