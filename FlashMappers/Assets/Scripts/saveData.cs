@@ -8,4 +8,5 @@ public class saveData
     public static flashCard wrongCard2;
 
     public static int selectedAnswer;
+    public static int numCardsLeft;
 }

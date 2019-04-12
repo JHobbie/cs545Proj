@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class bottomMouse : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -14,33 +14,43 @@ public class bottomMouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    void OnMouseDown(){
+    void OnMouseDown()
+    {
         diamondButtons.leftButton.SetActive(false);
         diamondButtons.rightButton.SetActive(false);
         diamondButtons.topButton.SetActive(false);
-        if(playerMovement.fromLeft){
+        if (playerMovement.fromLeft)
+        {
             mainCam.GetComponent<guiTopRight>().enabled = false;
             mainCam.GetComponent<guiBottomLeft>().enabled = false;
-            saveData.selectedAnswer= 3;
+            saveData.selectedAnswer = 3;
             Debug.Log(saveData.selectedAnswer);
         }
-        else if(playerMovement.fromRight){
+        else if (playerMovement.fromRight)
+        {
             mainCam.GetComponent<guiTopRight>().enabled = false;
             mainCam.GetComponent<guiBottomLeft>().enabled = false;
-            saveData.selectedAnswer= 3;
+            saveData.selectedAnswer = 3;
             Debug.Log(saveData.selectedAnswer);
         }
-        else{
+        else
+        {
             mainCam.GetComponent<guiBottomRight>().enabled = false;
             mainCam.GetComponent<guiBottomLeft>().enabled = false;
-            saveData.selectedAnswer= 2;
+            saveData.selectedAnswer = 2;
             Debug.Log(saveData.selectedAnswer);
         }
-        if(saveData.selectedAnswer == saveData.questionSlot){
-                saveData.chosenCard.seenYet=true;
+        if (saveData.selectedAnswer == saveData.questionSlot)
+        {
+            saveData.chosenCard.seenYet = true;
+            saveData.numCardsLeft--;
+            if (saveData.numCardsLeft == 0)
+            {
+                SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
             }
+        }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveDown());
         Debug.Log("bottom");
     }

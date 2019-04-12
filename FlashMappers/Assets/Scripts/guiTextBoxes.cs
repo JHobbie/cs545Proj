@@ -15,6 +15,7 @@ public class guiTextBoxes : MonoBehaviour
 
     void Start()
     {
+        saveData.numCardsLeft = saveData.loadedCards.allCards.Count;
         bLeft = GetComponent<guiBottomLeft>();
         bRight = GetComponent<guiBottomRight>();
         tRight = GetComponent<guiTopRight>();
@@ -40,7 +41,7 @@ public class guiTextBoxes : MonoBehaviour
         //After answer selected fill in boxes from A-C
         System.Random rnd = new System.Random();
         saveData.chosenCard = saveData.loadedCards.allCards[rnd.Next(1, saveData.loadedCards.allCards.Count)];
-        while (saveData.chosenCard.seenYet == true && saveData.loadedCards.allSeen == false)
+        while (saveData.chosenCard.seenYet == true)
         {
             saveData.chosenCard = saveData.loadedCards.allCards[rnd.Next(1, saveData.loadedCards.allCards.Count)];
         }

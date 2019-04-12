@@ -34,12 +34,14 @@ public class setOfCards
         setName = "NamelessSet";
         allCards = new List<flashCard>();
         frequentlyFailed = new List<flashCard>();
+        allSeen = false;
     }
     public setOfCards(string setName)
     {
         this.setName = setName;
         allCards = new List<flashCard>();
         frequentlyFailed = new List<flashCard>();
+        allSeen = false;
     }
     public void addCard(flashCard addedCard){
         allCards.Add(addedCard);

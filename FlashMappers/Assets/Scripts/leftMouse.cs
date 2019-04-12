@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class leftMouse : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -40,9 +40,11 @@ public class leftMouse : MonoBehaviour
             mainCam.GetComponent<guiBottomRight>().enabled = false;
             saveData.selectedAnswer = 2;
         }
-        if(saveData.selectedAnswer == saveData.questionSlot){
-                saveData.chosenCard.seenYet=true;
-            }
+        saveData.numCardsLeft--;
+        if (saveData.numCardsLeft == 0)
+        {
+            SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
+        }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveLeft());
         Debug.Log("left");
     }
