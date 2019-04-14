@@ -24,22 +24,16 @@ public class rightMouse : MonoBehaviour
         diamondButtons.topButton.SetActive(false);
         if (playerMovement.fromTop)
         {
-            mainCam.GetComponent<guiBottomLeft>().enabled = false;
-            mainCam.GetComponent<guiTopRight>().enabled = false;
             saveData.selectedAnswer = 3;
             Debug.Log(saveData.selectedAnswer);
         }
         else if (playerMovement.fromBottom)
         {
-            mainCam.GetComponent<guiBottomLeft>().enabled = false;
-            mainCam.GetComponent<guiTopRight>().enabled = false;
             saveData.selectedAnswer = 3;
             Debug.Log(saveData.selectedAnswer);
         }
         else
         {
-            mainCam.GetComponent<guiBottomRight>().enabled = false;
-            mainCam.GetComponent<guiTopRight>().enabled = false;
             saveData.selectedAnswer = 2;
             Debug.Log(saveData.selectedAnswer);
         }

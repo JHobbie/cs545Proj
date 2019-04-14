@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 public class playerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
-    
+
     public static bool fromLeft;
     public static bool fromRight;
     public static bool fromTop;
@@ -15,8 +15,37 @@ public class playerMovement : MonoBehaviour
 
     public static GameObject player;
 
+    private static TextMeshProUGUI topLeft;
+
+    public static void SetTopLeft(string value)
+    {
+        topLeft.SetText(value);
+    }
+    private static TextMeshProUGUI topRight;
+
+    public static void SetTopRight(string value)
+    {
+        topRight.SetText(value);
+    }
+
+    private static TextMeshProUGUI botLeft;
+
+    public static void SetBotLeft(string value)
+    {
+        botLeft.SetText(value);
+    }
+    private static TextMeshProUGUI botRight;
+
+    public static void SetBotRight(string value)
+    {
+        botRight.SetText(value);
+    }
     void Start()
     {
+        topLeft = GameObject.Find("TopLeftTextBox").GetComponent<TextMeshProUGUI>();
+        topRight = GameObject.Find("TopRightTextBox").GetComponent<TextMeshProUGUI>();
+        botLeft = GameObject.Find("BotLeftTextBox").GetComponent<TextMeshProUGUI>();
+        botRight = GameObject.Find("BotRightTextBox").GetComponent<TextMeshProUGUI>();
         fromLeft = true;
         fromRight = false;
         fromTop = false;
@@ -28,88 +57,116 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    
-    private static IEnumerator waitForOne(){
+
+    private static IEnumerator waitForOne()
+    {
         //moving the player until they activate the question
         guiTextBoxes.turnOff();
-        if(fromLeft){
-            for(int i = 0; i< 1000; i++){
-                if(player.transform.position.x >= -10.5f){
+        if (fromLeft)
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                if (player.transform.position.x >= -10.5f)
+                {
                     player.transform.position = new Vector3(-10.5f, player.transform.position.y, player.transform.position.z);
                     break;
                 }
-                else{
+                else
+                {
                     player.transform.position = new Vector3(player.transform.position.x + speeed, player.transform.position.y, player.transform.position.z);
                     yield return new WaitForSeconds(0.0051f);
                 }
             }
             diamondButtons.toggleLeft();
             guiTextBoxes.turnOn();
+            SetTopLeft(saveData.chosenCard.word);
         }
-        else if(fromRight){
-            for(int i = 0; i< 1000; i++){
-                if(player.transform.position.x <= 29f){
+        else if (fromRight)
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                if (player.transform.position.x <= 29f)
+                {
                     player.transform.position = new Vector3(29f, player.transform.position.y, player.transform.position.z);
                     break;
                 }
-                else{
+                else
+                {
                     player.transform.position = new Vector3(player.transform.position.x - speeed, player.transform.position.y, player.transform.position.z);
                     yield return new WaitForSeconds(0.0051f);
                 }
             }
             diamondButtons.toggleRight();
             guiTextBoxes.turnOn();
+            SetTopLeft(saveData.chosenCard.word);
         }
-        else if(fromBottom){
-            for(int i = 0; i< 1000; i++){
-                if(player.transform.position.y >= -12.5f){
+        else if (fromBottom)
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                if (player.transform.position.y >= -12.5f)
+                {
                     player.transform.position = new Vector3(player.transform.position.x, -12.5f, player.transform.position.z);
                     break;
                 }
-                else{
-                     player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + speeed, player.transform.position.z);
-                     yield return new WaitForSeconds(0.0051f);
+                else
+                {
+                    player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + speeed, player.transform.position.z);
+                    yield return new WaitForSeconds(0.0051f);
                 }
             }
             diamondButtons.toggleBottom();
             guiTextBoxes.turnOn();
+            SetTopLeft(saveData.chosenCard.word);
         }
-        else if (fromTop){
-            for(int i = 0; i< 1000; i++){
-                if(player.transform.position.y <= 14f){
+        else if (fromTop)
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                if (player.transform.position.y <= 14f)
+                {
                     player.transform.position = new Vector3(player.transform.position.x, 14f, player.transform.position.z);
                     break;
                 }
-                else{
+                else
+                {
                     player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - speeed, player.transform.position.z);
                     yield return new WaitForSeconds(0.0051f);
                 }
             }
             diamondButtons.toggleTop();
             guiTextBoxes.turnOn();
+            SetTopLeft(saveData.chosenCard.word);
         }
-        else{
+        else
+        {
             yield return null;
         }
     }
 
-    public static IEnumerator moveUp(){
+    public static IEnumerator moveUp()
+    {
         Debug.Log("moving up");
-        
-        if(fromLeft){
+
+        if (fromLeft)
+        {
             //move to right then go up
-            for(int i=0; i<2000; i++){
-                if(player.transform.position.x < 10.5f){
+            for (int i = 0; i < 2000; i++)
+            {
+                if (player.transform.position.x < 10.5f)
+                {
                     player.transform.position = new Vector3(player.transform.position.x + speeed, player.transform.position.y, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else if(player.transform.position.y < 26){
+                else if (player.transform.position.y < 26)
+                {
                     player.transform.position = new Vector3(10.5f, player.transform.position.y + speeed, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else{
+                else
+                {
                     player.transform.position = new Vector3(10.5f, -26f, player.transform.position.z);
                     fromLeft = false;
                     fromRight = false;
@@ -120,18 +177,23 @@ public class playerMovement : MonoBehaviour
                 }
             }
         }
-        else if(fromRight){
+        else if (fromRight)
+        {
             //move to left then go up
-            for(int i=0; i<2000; i++){
-                if(player.transform.position.x > 10.5f){
+            for (int i = 0; i < 2000; i++)
+            {
+                if (player.transform.position.x > 10.5f)
+                {
                     player.transform.position = new Vector3(player.transform.position.x - speeed, player.transform.position.y, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else if(player.transform.position.y < 26){
+                else if (player.transform.position.y < 26)
+                {
                     player.transform.position = new Vector3(10.5f, player.transform.position.y + speeed, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else{
+                else
+                {
                     player.transform.position = new Vector3(10.5f, -26f, player.transform.position.z);
                     fromLeft = false;
                     fromRight = false;
@@ -143,14 +205,18 @@ public class playerMovement : MonoBehaviour
             }
         }
 
-        else{
+        else
+        {
             //move up
-            for(int i=0; i<2000; i++){
-                if(player.transform.position.y < 26){
+            for (int i = 0; i < 2000; i++)
+            {
+                if (player.transform.position.y < 26)
+                {
                     player.transform.position = new Vector3(10.5f, player.transform.position.y + speeed, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else{
+                else
+                {
                     player.transform.position = new Vector3(10.5f, -26f, player.transform.position.z);
                     fromLeft = false;
                     fromRight = false;
@@ -163,21 +229,27 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    public static IEnumerator moveDown(){
+    public static IEnumerator moveDown()
+    {
         Debug.Log("moving down");
-        
-        if(fromLeft){
+
+        if (fromLeft)
+        {
             //move to right then go down
-            for(int i=0; i<2000; i++){
-                if(player.transform.position.x < 10.5f){
+            for (int i = 0; i < 2000; i++)
+            {
+                if (player.transform.position.x < 10.5f)
+                {
                     player.transform.position = new Vector3(player.transform.position.x + speeed, player.transform.position.y, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else if(player.transform.position.y > -26){
+                else if (player.transform.position.y > -26)
+                {
                     player.transform.position = new Vector3(10.5f, player.transform.position.y - speeed, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else{
+                else
+                {
                     player.transform.position = new Vector3(10.5f, 26f, player.transform.position.z);
                     fromLeft = false;
                     fromRight = false;
@@ -188,18 +260,23 @@ public class playerMovement : MonoBehaviour
                 }
             }
         }
-        else if(fromRight){
+        else if (fromRight)
+        {
             //move to left then go down
-            for(int i=0; i<2000; i++){
-                if(player.transform.position.x > 10.5f){
+            for (int i = 0; i < 2000; i++)
+            {
+                if (player.transform.position.x > 10.5f)
+                {
                     player.transform.position = new Vector3(player.transform.position.x - speeed, player.transform.position.y, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else if(player.transform.position.y > -26){
+                else if (player.transform.position.y > -26)
+                {
                     player.transform.position = new Vector3(10.5f, player.transform.position.y - speeed, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else{
+                else
+                {
                     player.transform.position = new Vector3(10.5f, 26f, player.transform.position.z);
                     fromLeft = false;
                     fromRight = false;
@@ -211,14 +288,18 @@ public class playerMovement : MonoBehaviour
             }
         }
 
-        else{
+        else
+        {
             //move down
-            for(int i=0; i<2000; i++){
-                if(player.transform.position.y > -26){
+            for (int i = 0; i < 2000; i++)
+            {
+                if (player.transform.position.y > -26)
+                {
                     player.transform.position = new Vector3(10.5f, player.transform.position.y - speeed, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else{
+                else
+                {
                     player.transform.position = new Vector3(10.5f, 26f, player.transform.position.z);
                     fromLeft = false;
                     fromRight = false;
@@ -230,22 +311,28 @@ public class playerMovement : MonoBehaviour
             }
         }
     }
-    
-    public static IEnumerator moveRight(){
+
+    public static IEnumerator moveRight()
+    {
         Debug.Log("moving right");
-        
-        if(fromBottom){
+
+        if (fromBottom)
+        {
             //move up then right
-            for(int i=0; i<2000; i++){
-                if(player.transform.position.y < 0){
+            for (int i = 0; i < 2000; i++)
+            {
+                if (player.transform.position.y < 0)
+                {
                     player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + speeed, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else if(player.transform.position.x < 36f){
+                else if (player.transform.position.x < 36f)
+                {
                     player.transform.position = new Vector3(player.transform.position.x + speeed, 0, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else{
+                else
+                {
                     player.transform.position = new Vector3(-36f, 0, player.transform.position.z);
                     fromLeft = true;
                     fromRight = false;
@@ -256,18 +343,23 @@ public class playerMovement : MonoBehaviour
                 }
             }
         }
-        else if(fromTop){
+        else if (fromTop)
+        {
             //move down then right
-            for(int i=0; i<2000; i++){
-                if(player.transform.position.y > 0){
+            for (int i = 0; i < 2000; i++)
+            {
+                if (player.transform.position.y > 0)
+                {
                     player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - speeed, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else if(player.transform.position.x < 36f){
+                else if (player.transform.position.x < 36f)
+                {
                     player.transform.position = new Vector3(player.transform.position.x + speeed, 0, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else{
+                else
+                {
                     player.transform.position = new Vector3(-36f, 0, player.transform.position.z);
                     fromLeft = true;
                     fromRight = false;
@@ -279,14 +371,18 @@ public class playerMovement : MonoBehaviour
             }
         }
 
-        else{
+        else
+        {
             //move right
-            for(int i=0; i<2000; i++){
-                if(player.transform.position.x < 36f){
+            for (int i = 0; i < 2000; i++)
+            {
+                if (player.transform.position.x < 36f)
+                {
                     player.transform.position = new Vector3(player.transform.position.x + speeed, 0, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else{
+                else
+                {
                     player.transform.position = new Vector3(-36f, 0, player.transform.position.z);
                     fromLeft = true;
                     fromRight = false;
@@ -299,21 +395,27 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    public static IEnumerator moveLeft(){
+    public static IEnumerator moveLeft()
+    {
         Debug.Log("moving left");
-        
-        if(fromBottom){
+
+        if (fromBottom)
+        {
             //move up then right
-            for(int i=0; i<2000; i++){
-                if(player.transform.position.y < 0){
+            for (int i = 0; i < 2000; i++)
+            {
+                if (player.transform.position.y < 0)
+                {
                     player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + speeed, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else if(player.transform.position.x > -36f){
+                else if (player.transform.position.x > -36f)
+                {
                     player.transform.position = new Vector3(player.transform.position.x - speeed, 0, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else{
+                else
+                {
                     player.transform.position = new Vector3(36f, 0, player.transform.position.z);
                     fromLeft = false;
                     fromRight = true;
@@ -324,18 +426,23 @@ public class playerMovement : MonoBehaviour
                 }
             }
         }
-        else if(fromTop){
+        else if (fromTop)
+        {
             //move down then right
-            for(int i=0; i<2000; i++){
-                if(player.transform.position.y > 0){
+            for (int i = 0; i < 2000; i++)
+            {
+                if (player.transform.position.y > 0)
+                {
                     player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - speeed, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else if(player.transform.position.x > -36f){
+                else if (player.transform.position.x > -36f)
+                {
                     player.transform.position = new Vector3(player.transform.position.x - speeed, 0, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else{
+                else
+                {
                     player.transform.position = new Vector3(36f, 0, player.transform.position.z);
                     fromLeft = false;
                     fromRight = true;
@@ -347,14 +454,18 @@ public class playerMovement : MonoBehaviour
             }
         }
 
-        else{
+        else
+        {
             //move left
-            for(int i=0; i<2000; i++){
-                if(player.transform.position.x > -36f){
+            for (int i = 0; i < 2000; i++)
+            {
+                if (player.transform.position.x > -36f)
+                {
                     player.transform.position = new Vector3(player.transform.position.x - speeed, 0, player.transform.position.z);
                     yield return new WaitForSeconds(0.00051f);
                 }
-                else{
+                else
+                {
                     player.transform.position = new Vector3(36f, 0, player.transform.position.z);
                     fromLeft = false;
                     fromRight = true;

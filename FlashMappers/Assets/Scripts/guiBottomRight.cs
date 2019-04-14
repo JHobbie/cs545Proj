@@ -19,13 +19,13 @@ public class guiBottomRight : MonoBehaviour
 
     void OnGUI(){
         if(saveData.questionSlot == 3){
-            GUI.Box(new Rect(Screen.width/3 * 2 - 60, Screen.height/3 * 2 + 12, Screen.width/3 + 60, Screen.height/3 - 12), "C: " + saveData.chosenCard.definition);
+            playerMovement.SetBotRight("C: " + saveData.chosenCard.definition);
         }
         else if (saveData.questionSlot == 1){
-            GUI.Box(new Rect(Screen.width/3 * 2 - 60, Screen.height/3 * 2 + 12, Screen.width/3 + 60, Screen.height/3 - 12), "C: " + saveData.wrongCard1.definition);
+            playerMovement.SetBotRight("C: " + saveData.wrongCard1.definition);
         }
         else{
-             GUI.Box(new Rect(Screen.width/3 * 2 - 60, Screen.height/3 * 2 + 12, Screen.width/3 + 60, Screen.height/3 - 12), "C: " + saveData.wrongCard2.definition);
+            playerMovement.SetBotRight("C: " + saveData.wrongCard2.definition);
         }
     }
 }

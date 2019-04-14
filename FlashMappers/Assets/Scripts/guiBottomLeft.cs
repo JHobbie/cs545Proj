@@ -24,13 +24,13 @@ public class guiBottomLeft : MonoBehaviour
 
     void OnGUI(){
         if(saveData.questionSlot == 2){
-            GUI.Box(new Rect(0, Screen.height/3 * 2 + 12, Screen.width/3 + 60, Screen.height/3 - 12), "B: " + saveData.chosenCard.definition);
+            playerMovement.SetBotLeft("B: " + saveData.chosenCard.definition);
         }
         else if(saveData.questionSlot == 1){
-            GUI.Box(new Rect(0, Screen.height/3 * 2 + 12, Screen.width/3 + 60, Screen.height/3 - 12), "B: " + saveData.wrongCard2.definition);
+            playerMovement.SetBotLeft("B: " + saveData.wrongCard2.definition);
         }
         else{
-             GUI.Box(new Rect(0, Screen.height/3 * 2 + 12, Screen.width/3 + 60, Screen.height/3 - 12), "B: " + saveData.wrongCard1.definition);
+            playerMovement.SetBotLeft("B: " + saveData.wrongCard1.definition);
         }
     }
 }
