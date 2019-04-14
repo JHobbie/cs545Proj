@@ -5,7 +5,7 @@ public class flashCard
 {
     public string word;
     public string definition;
-    public bool seenYet;
+    public bool seenYet = false;
 
     // Constructor that takes no arguments:
     public flashCard()
@@ -19,6 +19,10 @@ public class flashCard
         this.word = word;
         this.definition = definition;
         seenYet = false;
+    }
+    public override string ToString()
+    {
+        return "Flashcard: \nWord: " + this.word + " \nDefinition: " + this.definition + " \n Seen Yet: " + this.seenYet;
     }
 
 }

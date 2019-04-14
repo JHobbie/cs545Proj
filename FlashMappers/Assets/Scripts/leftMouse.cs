@@ -43,6 +43,7 @@ public class leftMouse : MonoBehaviour
             if (saveData.numCardsLeft <= 0)
             {
                 SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
+                return;
             }
         }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveLeft());

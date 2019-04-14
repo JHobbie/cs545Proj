@@ -41,9 +41,10 @@ public class rightMouse : MonoBehaviour
         {
             saveData.chosenCard.seenYet = true;
             saveData.numCardsLeft--;
-            if (saveData.numCardsLeft == 0)
+            if (saveData.numCardsLeft <= 0)
             {
                 SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
+                return;
             }
         }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveRight());
