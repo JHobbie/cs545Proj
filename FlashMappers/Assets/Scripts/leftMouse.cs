@@ -40,10 +40,14 @@ public class leftMouse : MonoBehaviour
             mainCam.GetComponent<guiBottomRight>().enabled = false;
             saveData.selectedAnswer = 2;
         }
-        saveData.numCardsLeft--;
-        if (saveData.numCardsLeft == 0)
+        if (saveData.selectedAnswer == saveData.questionSlot)
         {
-            SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
+            saveData.chosenCard.seenYet = true;
+            saveData.numCardsLeft--;
+            if (saveData.numCardsLeft == 0)
+            {
+                SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
+            }
         }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveLeft());
         Debug.Log("left");
