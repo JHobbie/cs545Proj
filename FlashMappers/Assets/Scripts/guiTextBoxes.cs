@@ -69,4 +69,23 @@ public class guiTextBoxes : MonoBehaviour
         Camera.main.GetComponent<guiTopRight>().enabled = false;
         Camera.main.GetComponent<guiTopLeft>().enabled = false;
     }
+
+    public static string stringCut(string str){
+        int counter = 0;
+        string newStr = str;
+        for(int i=0; i<str.Length; i++){
+            if(newStr[i] == '\n'){
+                counter = 0;
+            }
+            else if(counter>=(Screen.width/3 - 10)){
+                newStr = newStr.Insert(i, "\n");
+                counter = 0;
+            }
+            else{
+                counter++;
+            }
+        }
+        Debug.Log(newStr);
+        return newStr;
+    }
 }
