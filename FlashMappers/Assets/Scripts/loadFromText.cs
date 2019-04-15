@@ -40,7 +40,7 @@ public class loadFromText : MonoBehaviour
         {
             cardList.Remove(lastFlashCard);
             Destroy(lastFlashCard);
-            lastFlashCard = temp.transform.parent.gameObject;
+            lastFlashCard = cardList[cardList.Count - 1];;
         }
     }
     public setOfCards saveSet()
