@@ -27,7 +27,7 @@ public class loadFromText : MonoBehaviour
     {
         GameObject newFlashCard;
         newFlashCard = Instantiate(FlashCard, lastFlashCard.transform.position, lastFlashCard.transform.rotation);
-        newFlashCard.transform.SetParent(lastFlashCard.transform);
+        newFlashCard.transform.SetParent(GameObject.Find("ScrollContent").transform);
         newFlashCard.transform.position = new Vector3(lastFlashCard.transform.position.x, lastFlashCard.transform.position.y - 40, 1);
         newFlashCard.SetActive(true);
         lastFlashCard = newFlashCard;
