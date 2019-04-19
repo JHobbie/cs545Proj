@@ -58,4 +58,16 @@ public class rightMouse : MonoBehaviour
         }
         SceneManager.LoadScene("winScreen", LoadSceneMode.Single);
     }
+    void OnMouseOver()
+    {
+        //If your mouse hovers over the GameObject with the script attached
+        transform.localScale = new Vector3(2.3F, 2.3F, 0);
+        Debug.Log("hovering");
+    }
+
+    void OnMouseExit()
+    {
+        //The mouse is no longer hovering over the GameObject
+        transform.localScale = new Vector3(1.703812F,1.703812F,1.703812F);
+    }
 }
