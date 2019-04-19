@@ -43,11 +43,19 @@ public class rightMouse : MonoBehaviour
             saveData.numCardsLeft--;
             if (saveData.numCardsLeft <= 0)
             {
-                SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
+                StartCoroutine(playerMovement.moveRight());
+                StartCoroutine(waiting());
                 return;
             }
         }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveRight());
         Debug.Log("right");
+    }
+
+    IEnumerator waiting(){
+        while(!playerMovement.fromLeft){
+            yield return new WaitForSeconds(0.1f);
+        }
+        SceneManager.LoadScene("winScreen", LoadSceneMode.Single);
     }
 }

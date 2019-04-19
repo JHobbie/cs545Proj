@@ -35,7 +35,7 @@ public class guiTextBoxes : MonoBehaviour
         if (saveData.numCardsLeft <= 0)
         {
             Debug.Log("Ending Game");
-            SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
+            SceneManager.LoadScene("winScreen", LoadSceneMode.Single);
         }
         saveData.questionSlot = rnd.Next(1, 4);
         saveData.wrongCard1 = saveData.loadedCards.allCards[rnd.Next(0, saveData.loadedCards.allCards.Count)];

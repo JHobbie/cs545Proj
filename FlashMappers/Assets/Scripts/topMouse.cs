@@ -40,11 +40,20 @@ public class topMouse : MonoBehaviour
             saveData.numCardsLeft--;
             if (saveData.numCardsLeft <= 0)
             {
-                SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
+                StartCoroutine(playerMovement.moveUp());
+                StartCoroutine(waiting());
+                
                 return;
             }
         }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveUp());
         Debug.Log("top");
+    }
+
+    IEnumerator waiting(){
+        while(!playerMovement.fromBottom){
+            yield return new WaitForSeconds(0.1f);
+        }
+        SceneManager.LoadScene("winScreen", LoadSceneMode.Single);
     }
 }

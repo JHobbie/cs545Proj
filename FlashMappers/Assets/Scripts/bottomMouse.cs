@@ -42,11 +42,20 @@ public class bottomMouse : MonoBehaviour
             saveData.numCardsLeft--;
             if (saveData.numCardsLeft <= 0)
             {
-                SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
+                StartCoroutine(playerMovement.moveDown());
+                StartCoroutine(waiting());
+                
                 return;
             }
         }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveDown());
         Debug.Log("bottom");
+    }
+
+    IEnumerator waiting(){
+        while(!playerMovement.fromTop){
+            yield return new WaitForSeconds(0.1f);
+        }
+        SceneManager.LoadScene("winScreen", LoadSceneMode.Single);
     }
 }

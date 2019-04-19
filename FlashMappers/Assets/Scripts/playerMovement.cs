@@ -57,7 +57,9 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
+        }
     }
 
     private static IEnumerator waitForOne()
@@ -172,6 +174,10 @@ public class playerMovement : MonoBehaviour
                     fromRight = false;
                     fromTop = false;
                     fromBottom = true;
+                    if (saveData.numCardsLeft <= 0)
+                    {
+                        yield break;
+                    }
                     player.GetComponent<playerMovement>().StartCoroutine(playerMovement.waitForOne());
                     yield break;
                 }
@@ -199,6 +205,10 @@ public class playerMovement : MonoBehaviour
                     fromRight = false;
                     fromTop = false;
                     fromBottom = true;
+                    if (saveData.numCardsLeft <= 0)
+                    {
+                        yield break;
+                    }
                     player.GetComponent<playerMovement>().StartCoroutine(playerMovement.waitForOne());
                     yield break;
                 }
@@ -222,6 +232,10 @@ public class playerMovement : MonoBehaviour
                     fromRight = false;
                     fromTop = false;
                     fromBottom = true;
+                    if (saveData.numCardsLeft <= 0)
+                    {
+                        yield break;
+                    }
                     player.GetComponent<playerMovement>().StartCoroutine(playerMovement.waitForOne());
                     yield break;
                 }
@@ -255,6 +269,10 @@ public class playerMovement : MonoBehaviour
                     fromRight = false;
                     fromTop = true;
                     fromBottom = false;
+                    if (saveData.numCardsLeft <= 0)
+                    {
+                        yield break;
+                    }
                     player.GetComponent<playerMovement>().StartCoroutine(playerMovement.waitForOne());
                     yield break;
                 }
@@ -282,6 +300,10 @@ public class playerMovement : MonoBehaviour
                     fromRight = false;
                     fromTop = true;
                     fromBottom = false;
+                    if (saveData.numCardsLeft <= 0)
+                    {
+                        yield break;
+                    }
                     player.GetComponent<playerMovement>().StartCoroutine(playerMovement.waitForOne());
                     yield break;
                 }
@@ -305,6 +327,10 @@ public class playerMovement : MonoBehaviour
                     fromRight = false;
                     fromTop = true;
                     fromBottom = false;
+                    if (saveData.numCardsLeft <= 0)
+                    {
+                        yield break;
+                    }
                     player.GetComponent<playerMovement>().StartCoroutine(playerMovement.waitForOne());
                     yield break;
                 }
@@ -338,6 +364,10 @@ public class playerMovement : MonoBehaviour
                     fromRight = false;
                     fromTop = false;
                     fromBottom = false;
+                    if (saveData.numCardsLeft <= 0)
+                    {
+                        yield break;
+                    }
                     player.GetComponent<playerMovement>().StartCoroutine(playerMovement.waitForOne());
                     yield break;
                 }
@@ -365,6 +395,10 @@ public class playerMovement : MonoBehaviour
                     fromRight = false;
                     fromTop = false;
                     fromBottom = false;
+                    if (saveData.numCardsLeft <= 0)
+                    {
+                        yield break;
+                    }
                     player.GetComponent<playerMovement>().StartCoroutine(playerMovement.waitForOne());
                     yield break;
                 }
@@ -388,6 +422,10 @@ public class playerMovement : MonoBehaviour
                     fromRight = false;
                     fromTop = false;
                     fromBottom = false;
+                    if (saveData.numCardsLeft <= 0)
+                    {
+                        yield break;
+                    }
                     player.GetComponent<playerMovement>().StartCoroutine(playerMovement.waitForOne());
                     yield break;
                 }
@@ -421,6 +459,10 @@ public class playerMovement : MonoBehaviour
                     fromRight = true;
                     fromTop = false;
                     fromBottom = false;
+                    if (saveData.numCardsLeft <= 0)
+                    {
+                        yield break;
+                    }
                     player.GetComponent<playerMovement>().StartCoroutine(playerMovement.waitForOne());
                     yield break;
                 }
@@ -448,6 +490,10 @@ public class playerMovement : MonoBehaviour
                     fromRight = true;
                     fromTop = false;
                     fromBottom = false;
+                    if (saveData.numCardsLeft <= 0)
+                    {
+                        yield break;
+                    }
                     player.GetComponent<playerMovement>().StartCoroutine(playerMovement.waitForOne());
                     yield break;
                 }
@@ -471,6 +517,10 @@ public class playerMovement : MonoBehaviour
                     fromRight = true;
                     fromTop = false;
                     fromBottom = false;
+                    if (saveData.numCardsLeft <= 0)
+                    {
+                        yield break;
+                    }
                     player.GetComponent<playerMovement>().StartCoroutine(playerMovement.waitForOne());
                     yield break;
                 }

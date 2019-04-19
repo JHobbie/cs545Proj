@@ -42,11 +42,20 @@ public class leftMouse : MonoBehaviour
             saveData.numCardsLeft--;
             if (saveData.numCardsLeft <= 0)
             {
-                SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
+                StartCoroutine(playerMovement.moveLeft());
+                StartCoroutine(waiting());
+                
                 return;
             }
         }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveLeft());
         Debug.Log("left");
+    }
+
+    IEnumerator waiting(){
+        while(!playerMovement.fromRight){
+            yield return new WaitForSeconds(0.1f);
+        }
+        SceneManager.LoadScene("winScreen", LoadSceneMode.Single);
     }
 }
