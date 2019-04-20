@@ -24,6 +24,6 @@ public class gameTimer : MonoBehaviour
         minutes = Mathf.Floor(timer / 60).ToString("00");
         seconds = (timer % 60).ToString("00");
      
-        //timerPanel.text = minutes + ":" + seconds;
+        timerText.text = minutes + ":" + seconds;
     }
 }
