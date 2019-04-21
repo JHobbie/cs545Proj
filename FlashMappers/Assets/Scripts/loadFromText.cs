@@ -113,6 +113,7 @@ public class loadFromText : MonoBehaviour
                     addFlashCard();
                     i++;
                 }
+                removeFlashCard();
             }
             catch (NullReferenceException e)
             {
