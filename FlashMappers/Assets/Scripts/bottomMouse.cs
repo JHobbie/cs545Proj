@@ -6,6 +6,7 @@ public class bottomMouse : MonoBehaviour
 {
     // Start is called before the first frame update
     Camera mainCam;
+    public GameObject wrongAns;
     void Start()
     {
         mainCam = Camera.main;
@@ -44,16 +45,22 @@ public class bottomMouse : MonoBehaviour
             {
                 StartCoroutine(playerMovement.moveDown());
                 StartCoroutine(waiting());
-                
+
                 return;
             }
+        }
+        else
+        {
+            wrongAns.SetActive(true);
         }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveDown());
         Debug.Log("bottom");
     }
 
-    IEnumerator waiting(){
-        while(!playerMovement.fromTop){
+    IEnumerator waiting()
+    {
+        while (!playerMovement.fromTop)
+        {
             yield return new WaitForSeconds(0.1f);
         }
         SceneManager.LoadScene("winScreen", LoadSceneMode.Single);
@@ -69,6 +76,6 @@ public class bottomMouse : MonoBehaviour
     void OnMouseExit()
     {
         //The mouse is no longer hovering over the GameObject
-        transform.localScale = new Vector3(1.703812F,1.703812F,1.703812F);
+        transform.localScale = new Vector3(1.703812F, 1.703812F, 1.703812F);
     }
 }

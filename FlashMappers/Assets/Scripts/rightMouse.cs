@@ -6,6 +6,7 @@ public class rightMouse : MonoBehaviour
 {
     // Start is called before the first frame update
     Camera mainCam;
+    public GameObject wrongAns;
     void Start()
     {
         mainCam = Camera.main;
@@ -48,12 +49,18 @@ public class rightMouse : MonoBehaviour
                 return;
             }
         }
+        else
+        {
+            wrongAns.SetActive(true);
+        }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveRight());
         Debug.Log("right");
     }
 
-    IEnumerator waiting(){
-        while(!playerMovement.fromLeft){
+    IEnumerator waiting()
+    {
+        while (!playerMovement.fromLeft)
+        {
             yield return new WaitForSeconds(0.1f);
         }
         SceneManager.LoadScene("winScreen", LoadSceneMode.Single);
@@ -68,6 +75,6 @@ public class rightMouse : MonoBehaviour
     void OnMouseExit()
     {
         //The mouse is no longer hovering over the GameObject
-        transform.localScale = new Vector3(1.703812F,1.703812F,1.703812F);
+        transform.localScale = new Vector3(1.703812F, 1.703812F, 1.703812F);
     }
 }

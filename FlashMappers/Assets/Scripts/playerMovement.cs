@@ -40,6 +40,9 @@ public class playerMovement : MonoBehaviour
     {
         botRight.SetText(value);
     }
+
+    public GameObject setWrongAns;
+    private static GameObject wrongAns;
     void Start()
     {
         topLeft = GameObject.Find("TopLeftTextBox").GetComponent<TextMeshProUGUI>();
@@ -51,6 +54,8 @@ public class playerMovement : MonoBehaviour
         fromTop = false;
         fromBottom = false;
         player = GameObject.Find("player_tilesheet_0");
+        wrongAns=setWrongAns;
+        wrongAns.SetActive(false);
         StartCoroutine(waitForOne());
     }
 
@@ -66,6 +71,7 @@ public class playerMovement : MonoBehaviour
     {
         //moving the player until they activate the question
         guiTextBoxes.turnOff();
+        wrongAns.SetActive(false);
         if (fromLeft)
         {
             for (int i = 0; i < 1000; i++)

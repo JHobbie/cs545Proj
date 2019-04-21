@@ -6,6 +6,7 @@ public class leftMouse : MonoBehaviour
 {
     // Start is called before the first frame update
     Camera mainCam;
+    public GameObject wrongAns;
     void Start()
     {
         mainCam = Camera.main;
@@ -47,6 +48,9 @@ public class leftMouse : MonoBehaviour
                 
                 return;
             }
+        }
+        else{
+            wrongAns.SetActive(true);
         }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveLeft());
         Debug.Log("left");
