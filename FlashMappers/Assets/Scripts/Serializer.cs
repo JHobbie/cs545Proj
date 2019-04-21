@@ -16,7 +16,9 @@ public class Serializer
                 using (Stream stream = File.OpenRead(filename))
                 {
                     BinaryFormatter formatter = new BinaryFormatter();
-                    return formatter.Deserialize(stream) as T;
+                    T temp = formatter.Deserialize(stream) as T;
+                    stream.Close();
+                    return temp;
                 }
             }
             catch (Exception e)
@@ -33,6 +35,7 @@ public class Serializer
         {
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(stream, data);
+            stream.Close();
         }
     }
     public static string GetSavePath(string name)

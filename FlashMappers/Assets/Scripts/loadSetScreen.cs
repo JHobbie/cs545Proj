@@ -42,6 +42,7 @@ public class loadSetScreen : MonoBehaviour
         {
             string name = paths[loadDropdown.value];
             saveData.loadedCards = Serializer.Load<setOfCards>(name);
+            Debug.Log(name);
             SceneManager.LoadScene("game", LoadSceneMode.Single);
         }
 

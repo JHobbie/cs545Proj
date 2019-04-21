@@ -34,7 +34,11 @@ public class guiTextBoxes : MonoBehaviour
         }
         if (saveData.numCardsLeft <= 0)
         {
-            Debug.Log("Ending Game");
+            for( int i = 0; i < saveData.loadedCards.allCards.Count; i++){
+                saveData.loadedCards.allCards[i].seenYet = false;
+                Debug.Log("Ending Game");
+            }
+            Serializer.Save<setOfCards>(Serializer.GetSavePath(saveData.loadedCards.setName), saveData.loadedCards);
             SceneManager.LoadScene("winScreen", LoadSceneMode.Single);
         }
         saveData.questionSlot = rnd.Next(1, 4);
