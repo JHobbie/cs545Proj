@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class loadSetScreen : MonoBehaviour
 {
     public Dropdown loadDropdown;
-    
+
     private string saveLocation;
     private List<string> paths;
     // Start is called before the first frame update
@@ -18,7 +18,8 @@ public class loadSetScreen : MonoBehaviour
         List<string> fileNames = new List<string>();
         DirectoryInfo d = new DirectoryInfo(Application.persistentDataPath);
         FileInfo[] Files = d.GetFiles("*.sav");
-        foreach(FileInfo file in Files){
+        foreach (FileInfo file in Files)
+        {
             fileNames.Add(file.Name);
         }
         saveLocation = Application.persistentDataPath;
@@ -37,8 +38,12 @@ public class loadSetScreen : MonoBehaviour
     }
     public void loadAndPlay()
     {
-        string name = paths[loadDropdown.value];
-        saveData.loadedCards = Serializer.Load<setOfCards>(name);
-        SceneManager.LoadScene("game", LoadSceneMode.Single);
+        if (loadDropdown.options.Count > 0)
+        {
+            string name = paths[loadDropdown.value];
+            saveData.loadedCards = Serializer.Load<setOfCards>(name);
+            SceneManager.LoadScene("game", LoadSceneMode.Single);
+        }
+
     }
 }
