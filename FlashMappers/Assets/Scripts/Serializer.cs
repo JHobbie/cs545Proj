@@ -42,4 +42,8 @@ public class Serializer
     {
         return Path.Combine(Application.persistentDataPath, name + ".sav");
     }
+    public static string GetPath(string name)
+    {
+        return Path.Combine(Application.persistentDataPath, name);
+    }
 }

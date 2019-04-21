@@ -22,9 +22,6 @@ public class loadSetScreen : MonoBehaviour
         {
             fileNames.Add(file.Name);
         }
-        saveLocation = Application.persistentDataPath;
-        string[] pathNames = Directory.GetFiles(saveLocation);
-        paths = pathNames.OfType<string>().ToList();
         loadDropdown.AddOptions(fileNames);
     }
     // Update is called once per frame
@@ -40,8 +37,11 @@ public class loadSetScreen : MonoBehaviour
     {
         if (loadDropdown.options.Count > 0)
         {
-            string name = paths[loadDropdown.value];
-            saveData.loadedCards = Serializer.Load<setOfCards>(name);
+            string name = loadDropdown.options[loadDropdown.value].text;
+            saveData.loadedCards = Serializer.Load<setOfCards>(Serializer.GetPath(name));
+            for( int i = 0; i < saveData.loadedCards.allCards.Count; i++){
+                saveData.loadedCards.allCards[i].seenYet = false;
+            }
             Debug.Log(name);
             SceneManager.LoadScene("game", LoadSceneMode.Single);
         }
