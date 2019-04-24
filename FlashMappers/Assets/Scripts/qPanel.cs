@@ -23,6 +23,7 @@ public class qPanel : MonoBehaviour {
     // Update is called once per frame
     void Update(){
         //check for current scene, then run DisplayQ
+        //hello
     }
 
     public static void DisplayQ (){
