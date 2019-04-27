@@ -42,6 +42,7 @@ public class rightMouse : MonoBehaviour
         {
             saveData.chosenCard.seenYet = true;
             saveData.numCardsLeft--;
+            rightWrong.right.Play();
             if (saveData.numCardsLeft <= 0)
             {
                 StartCoroutine(playerMovement.moveRight());
@@ -52,6 +53,7 @@ public class rightMouse : MonoBehaviour
         else
         {
             wrongAns.SetActive(true);
+            rightWrong.wrong.Play();
         }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveRight());
         Debug.Log("right");

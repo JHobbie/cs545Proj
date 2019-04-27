@@ -41,10 +41,12 @@ public class bottomMouse : MonoBehaviour
         {
             saveData.chosenCard.seenYet = true;
             saveData.numCardsLeft--;
+            rightWrong.right.Play();
             if (saveData.numCardsLeft <= 0)
             {
                 StartCoroutine(playerMovement.moveDown());
                 StartCoroutine(waiting());
+                
 
                 return;
             }
@@ -52,6 +54,7 @@ public class bottomMouse : MonoBehaviour
         else
         {
             wrongAns.SetActive(true);
+            rightWrong.wrong.Play();
         }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveDown());
         Debug.Log("bottom");

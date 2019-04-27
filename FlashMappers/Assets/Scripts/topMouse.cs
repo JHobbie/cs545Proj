@@ -39,6 +39,7 @@ public class topMouse : MonoBehaviour
         {
             saveData.chosenCard.seenYet = true;
             saveData.numCardsLeft--;
+            rightWrong.right.Play();
             if (saveData.numCardsLeft <= 0)
             {
                 StartCoroutine(playerMovement.moveUp());
@@ -50,6 +51,7 @@ public class topMouse : MonoBehaviour
         else
         {
             wrongAns.SetActive(true);
+            rightWrong.wrong.Play();
         }
         playerMovement.player.GetComponent<playerMovement>().StartCoroutine(playerMovement.moveUp());
         Debug.Log("top");
